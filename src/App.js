@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
 import Single from './pages/Single/index';
+import ChantierExistant from './pages/Chantier_Existant/index';
 
 import './App.css';
 
@@ -10,6 +11,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/chantier/:id" element={<Single />} />
+                <Route path="/chantier_existant/" element={<ChantierExistant />} />
             </Routes>
     </div>
   );
