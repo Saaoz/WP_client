@@ -10,7 +10,6 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/chantier/:id" element={<Single />} />
-
             </Routes>
     </div>
   );
