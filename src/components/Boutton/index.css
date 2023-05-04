@@ -1,0 +1,52 @@
+.btn1 {
+    width: 141px;
+    height: 48px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--violet);
+
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Kumbh Sans;
+}
+
+.btn1:hover {
+    cursor: pointer;
+    background-color: var(--ligth-violet);
+
+}
+
+.btn1:disabled {
+    cursor: not-allowed;
+    background-color: var(--gray);
+}
+
+.btn2 {
+    width: 141px;
+    height: 48px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(89, 100, 224, 0.1);
+
+    color: rgba(89, 100, 224, 1);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Kumbh Sans;
+}
+
+.btn2:hover {
+    cursor: pointer;
+    background-color: rgba(89, 100, 224, 0.35);
+}
+
+.btn-search{
+    min-width: 123px;
+    margin-right: 16px;
+    padding: 0;
+}
+
+.btn-loadmore{
+    margin-bottom: 104px;
+}
+
