@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
-import Single from './pages/Single/index';
+import Single from './pages/SingleChantier/index';
 import ChantierExistant from './pages/Chantier_Existant/index';
 import Create from './pages/Create_project/index'
 
