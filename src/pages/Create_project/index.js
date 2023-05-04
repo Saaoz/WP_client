@@ -1,3 +1,5 @@
+import Button from '../../components/Boutton';
+import Input from '../../components/Input';
 import './index.css';
 
 
@@ -5,7 +7,12 @@ import './index.css';
 function Create_project() {
     return (
         <>
-            <p>MA PAGE UWU GAMING</p>
+            <Input />
+            <Input />
+            <Input />
+            <Input />
+            <Button/>
+            <Button/>
         </>
     );
   }
