@@ -12,6 +12,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/chantier/:id" element={<Single />} />
                 <Route path="/chantier_existant/" element={<ChantierExistant />} />
+                <Route path="/create" element={<Single />} />
             </Routes>
     </div>
   );
