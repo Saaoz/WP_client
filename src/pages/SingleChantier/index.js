@@ -2,11 +2,11 @@ import './index.css';
 
 
 
-function Single() {
+function SingleChantier() {
     return (
         <>
         
         </>
     );
   }
-  export default Single;
+  export default SingleChantier;
