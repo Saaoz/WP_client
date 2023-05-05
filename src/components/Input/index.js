@@ -1,15 +1,16 @@
 import './index.css';
 
-const Input = ({placeholder, type, id, onChange, value} ) => {
+const Input = ({ placeholder, type, id, onChange, value, maxlength }) => {
 
         return (
-            <input 
-                id={id}
-                className='input'
-                type={type}
-                placeholder={placeholder}
-                onChange={onChange}
-                value={value}
+                <input
+                        id={id}
+                        className='input'
+                        type={type ? type : 'text'}
+                        placeholder={placeholder}
+                        onChange={onChange}
+                        value={value}
+                        maxLength={maxlength ? maxlength : null}
                 />
         );
 };
