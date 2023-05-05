@@ -16,6 +16,12 @@ function App() {
                 <Route path="/chantier_existant/" element={<Chantier_Existant />} />
                 <Route path="/createproject" element={<Create />} />
                 <Route path="/createworkmanager" element={<CreateWorkmanager />} />
+
+                {/* route des pliages */}
+
+                
+
+
             </Routes>
     </div>
   );
