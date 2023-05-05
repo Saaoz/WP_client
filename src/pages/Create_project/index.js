@@ -1,7 +1,7 @@
-import Button from '../../components/Boutton';
+import Button from '../../components/Button';
 import Input from '../../components/Input';
 import './index.css';
-import '../../components/Boutton/index.css'
+import '../../components/Button/index.css'
 import '../../components/Input/index.css'
 
 function Create_project() {
