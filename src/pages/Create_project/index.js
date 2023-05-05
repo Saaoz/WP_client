@@ -5,9 +5,15 @@ import '../../components/Button/index.css'
 import '../../components/Input/index.css'
 
 function Create_project() {
+
+    const handleSubmit = () => {
+        alert('fonction pour envoyer les données en base de données')
+    }
+
+
     return (
         <container className='back_formu'>
-            <container className='formulaire' >
+            <form className='formulaire' >
                 <h1>Creation d’un nouveau project </h1>
                 <div className='input_zone'>
                     <Input className="input input_c" type="text" placeholder='Nom du chantier' />
@@ -18,10 +24,10 @@ function Create_project() {
                     </div>
                 </div>
                 <div className='btn_zone'>
-                    <Button className="btn2" value="Valider" />
+                    <Button className="btn2" onClick={handleSubmit} value="Valider" />
                     <Button className="btn2" value="Retour" />
                 </div>
-            </container>
+            </form>
         </container>
     );
   }
