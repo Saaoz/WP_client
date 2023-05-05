@@ -16,9 +16,7 @@
     --bg: #D9D9D9;
 }
 
-body {
-    font-size: 16px;
-}
+
 
 h1 {
     font-family: Kumbh Sans;
@@ -57,10 +55,4 @@ p {
 
 a {
     text-decoration: none;
-}
-
-body {
-    background-image: url(../sources/imgs/unsplash__VOsFe3_JeE.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
 }

@@ -1,8 +1,6 @@
 .input-container{
     width: 100%;
-    height: 80px;
     display: flex;
-    position: relative;
     margin: 0;
     padding: 0;
     border: none;
@@ -11,27 +9,14 @@
 .input{
     width: 100%;
     margin: 0;
-    padding: 0;
-    text-indent: 72px;
+    padding: 2rem;
     font-family: 'Kumbh Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 1.6rem;
+    line-height: 2rem;
     color: #19202D;
     border: none;
     border-right: 1px solid rgba(25, 32, 45, 0.2);
     border-radius: 1rem;
-}
-
-.btn{
-    width: 141px;
-    height: 48px;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--violet);
-    color: var(--white);
-    font-size: 16px;
-    font-weight: 700;
-    font-family: Kumbh Sans;
 }
