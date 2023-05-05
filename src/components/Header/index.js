@@ -9,9 +9,9 @@ const Header = () => {
                 {/* <p className='connexion-status'>Login</p> */}
                 <Logo />
                 <p className='connexion-status'>Login</p>
-
+                <Link to="/createworkmanager" className='createworkmanager'>
                 <p className='connexion-status'>create Workmanager</p>
-
+                </Link>
 
             </nav>
         </div>

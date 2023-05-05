@@ -1,4 +1,4 @@
-import './styles.css';
+import './index.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
