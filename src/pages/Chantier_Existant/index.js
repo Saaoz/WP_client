@@ -6,14 +6,14 @@ const Chantier_Existant = () => {
 
 
     return (
-        <div className="chantier_existant_page">
+        <div className="existing-site-page">
             <Header />
-            <div className='chantier_existant_container'>
+            <div className='existing-site-container'>
         {/* --------------- */}
         {/* attention data en DURE  */}
         {/* --------------- */}
-            <h1>Building sites</h1>
-            <div className='last_buildings'>
+            <h1>Worksites</h1>
+            <div className='last-worksite'>
             <BuildingCard dataBuilding={{'name':'Super U', 'id':'3'}}/>
             <BuildingCard dataBuilding={{'name':'Sourcydis', 'id':'4'}}/>
             <BuildingCard dataBuilding={{'name':'Nextcity', 'id':'5'}}/>

@@ -1,5 +1,5 @@
 import './index.css';
-import Button from '../../components/Boutton';
+import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
 
 const BuildingCard = ({dataBuilding}) => {

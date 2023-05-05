@@ -1,8 +1,26 @@
 import './index.css'
 
 const LogingForm = () => {
+
+        const handleSubmit = async (e) => {
+        e.preventDefault();
+        const dataFrom=new FormData(e.target);
+        // console.log(dataFrom);
+        //il faut le endpoint pour le login
+        const response = await fetch('http://localhost:8000/wp-json/wp/v2/users',
+        {
+            method:'POST',
+            body:dataFrom,
+            creadentials: 'include',
+            headers:{
+                Accept:'application/json'
+            }
+        })
+        console.log(response);
+
+    }
     return (
-        <form className='logingform'>
+        <form className='logingform' >
             <h1 className='title-loging-form'>Se connecter</h1>
             {/* /ferme le form and refresh page */}
             <span onClick={() => window.location.reload()} className="span-close" title="Close foem">&times;</span>
