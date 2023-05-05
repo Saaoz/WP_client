@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "../../components/Header";
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import './index.css';
@@ -15,8 +16,10 @@ function Create_project() {
         e.preventDefault();
         console.log(worksite_name, street, postal_code, city);
     }
-    
+
     return (
+        <>
+        <Header/>
         <container className='back_formu'>
             <form className='formulaire' >
                 <h1>Creation d’un nouveau project </h1>
@@ -34,6 +37,7 @@ function Create_project() {
                 </div>
             </form>
         </container>
+        </>
     );
 }
 export default Create_project;
