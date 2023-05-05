@@ -10,7 +10,7 @@ const Header = () => {
                 <Logo />
                 <p className='connexion-status'>Login</p>
 
-                <p className='connexion-status'>Login</p>
+                <p className='connexion-status'>create Workmanager</p>
 
 
             </nav>
