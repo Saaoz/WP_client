@@ -2,15 +2,22 @@
 
 
 :root {
-    --violet: #5964E0;
+    /* boutons primaires */
+    --violet: #5964E0; 
     --ligth-violet: #939BF4;
+     /* boutons primaires dark mode */
     --very-dark-blue: #19202D;
     --midnight: #121721;
+
     --white: #FFFFFF;
     --light-grey: #F4F6F8;
     --gray: #9DAEC2;
     --dark-gray: #6E8098;
     --bg: #D9D9D9;
+}
+
+body {
+    font-size: 16px;
 }
 
 h1 {
