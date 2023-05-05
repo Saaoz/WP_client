@@ -3,6 +3,8 @@ import './index.css';
 const Input = ({ placeholder, type, id, onChange, value, maxlength }) => {
 
         return (
+
+        <div className='input-container'>
                 <input
                         id={id}
                         className='input'
@@ -12,6 +14,7 @@ const Input = ({ placeholder, type, id, onChange, value, maxlength }) => {
                         value={value}
                         maxLength={maxlength ? maxlength : null}
                 />
+        </div>
         );
 };
 

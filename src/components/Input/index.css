@@ -23,12 +23,6 @@
     border-right: 1px solid rgba(25, 32, 45, 0.2);
     border-radius: 1rem;
 }
-.icon-input{
-    position: absolute;
-    left: 32px;
-    top: 50%;
-    transform: translateY(-50%);
-}
 
 .btn{
     width: 141px;
