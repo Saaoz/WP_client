@@ -12,10 +12,10 @@ function Home() {
             <Header />
             <div className='home-content'>
                 <Link to="/createproject" className='Create'>
-                    <Button className = 'btn-home-newWorksite' value = 'New worksite'/>
+                    <Button className = 'btn-home-newWorksite' value = 'Nouveau chantier'/>
                 </Link>
                 <Link to="/chantier_existant/" className='Chantier_Existant'>
-                    <Button className = 'btn-home-existingWorksite' value = 'Existing worksite'/>
+                    <Button className = 'btn-home-existingWorksite' value = 'Liste des chantiers'/>
                 </Link>
             </div>
         </div>
