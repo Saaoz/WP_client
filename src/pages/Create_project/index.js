@@ -77,7 +77,7 @@ function Create_project() {
             <Header />
             <div className='back_formu'>
                 <form className='formulaire' >
-                    <h1>Creation d’un nouveau project </h1>
+                    <h1>Créer un chantier :</h1>
                     <div className='input_zone'>
                         <Input className="input input_c" value={worksite_name} type="text" placeholder='Nom du chantier' onChange={(e) => setWorksite_name(e.target.value)} required />
                         <Input className="input input_a" value={street} type="text" placeholder='Numéro et nom de la rue' onChange={(e) => setStreet(e.target.value)} required />
@@ -87,8 +87,9 @@ function Create_project() {
                         </div>
                     </div>
                     <div className='btn_zone'>
-                        <Button className="btn2" onClick={handleSubmit} value="Valider" />
-                        <Button className="btn2" value="Retour" />
+                        <Button className="btn1" value="Retour" onClick={() => navigate('/')} />
+                        <Button className="btn1" onClick={handleSubmit} value="Valider" />
+
                     </div>
                 </form>
             </div>

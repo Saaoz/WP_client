@@ -8,9 +8,40 @@
 }
 
 .home-content{
+    width: 100%;
+    padding: 10rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 80%;
-    margin-bottom: 5rem;
+    justify-content: center;
+    gap: 10rem;
+    height: 100vh;
 }
+
+.Create, .Chantier_Existant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.Create:hover, .Chantier_Existant:hover {
+    scale: 1.05;
+}
+
+.btn-home-existingWorksite, .btn-home-newWorksite {
+    
+    color: var(--title);
+}
+
+@media screen and (max-width: 768px) {
+    .home-content{
+        flex-direction: column;
+        gap: 10rem;
+    }
+    .Create, .Chantier_Existant{
+        height: 20rem;
+    }
+}
+

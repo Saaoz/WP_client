@@ -1,21 +1,85 @@
-.header{
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
+    padding: 2rem;
+    background-color: var(--headerBg);
 }
 
-.header p{
-    color: var(--white);
+.header p {
+    color: var(--headerTxt);
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
-.header nav{
+.header nav {
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 30px;
-    justify-content: flex-start;
-    margin-left: 30px;
-    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.header nav .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.connexion-status, .createworkmanager {
+    transition: all 0.2s ease-in-out;
+}
+
+.connexion-status:hover, .createworkmanager:hover {
+    color: #5964E0;
+    transform: translateY(-1px);
+    cursor: pointer;
+}
+
+.logo:hover {
+    -webkit-animation:spin 0.2s linear ;
+    -moz-animation:spin 0.2s linear ;
+    animation:spin 0.2s linear ;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+
+
+.header nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 768px) {
+    .header nav .links {
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .header nav .links {
+        gap: 1rem;
+    }
+    .header p {
+        font-size: 1.4rem;
+        
+    }
 }

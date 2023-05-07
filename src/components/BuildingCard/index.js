@@ -27,13 +27,13 @@ const BuildingCard = ({dataBuilding}) => {
             <p>Dernière consultation</p>
             <div className = 'actionCote'>
                 {/* botton pour consulterla dernière demande de prix */}
-                <Button className = 'btn2' value = 'Read' onClick = {() => navigate(`/chantier_consultation/${id}`)}/>
+                <Button className = 'btn2' value = 'Lire' onClick = {() => navigate(`/chantier_consultation/${id}`)}/>
                 
                 {/* button pour renvoyer la dernière demande de prix */}
-                <Button className = 'btn2' value = 'Send again' onClick = {() => {}}/>
+                <Button className = 'btn2' value = 'Renvoyer' onClick = {() => {}}/>
             </div>
             {/* button pour la création d'une nouvelle demande de prix envoyant l'id chantier */}
-            <Button className = 'btn1' value = 'New folding' onClick = {() => {navigate(`/new_folding/${id}`)}}/>
+            <Button className = 'btn1' value = 'Nouv. pliage' onClick = {() => {navigate(`/new_folding/${id}`)}}/>
 
         </div>
     );

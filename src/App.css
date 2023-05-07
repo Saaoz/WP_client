@@ -2,3 +2,42 @@
   text-align: center;
 }
 
+:root {
+  --headerBg: rgba(34, 36, 38, 0.8);
+  --headerTxt: #FFF;
+  --primaryBtn: #5964E0; 
+  --primaryBtnHover: #939BF4;
+  --primaryBtnText: #FFFFFF;
+  --secondaryBtn: #222426;
+  --secondaryBtnHover: #19202D;
+  --secondaryBtnText: #E5E5E5;
+  --text: #FFFFFF;
+  --title: #222426;
+  --secondaryBg: #FFFFFF;
+  --toggle: #5964E0;
+  --toggleBg : #FFF;
+  --light-grey: #F4F6F8;
+  --gray: #9DAEC2;
+  --dark-gray: #6E8098;
+  --bg: #D9D9D9;
+}
+
+.dark {
+  --headerBg: rgba(34, 36, 38, 0.8);
+  --headerTxt: #FFFFFF;
+  --primaryBtn: #5964E0; 
+  --primaryBtnHover: #939BF4;
+  --primaryBtnText: #FFFFFF;
+  --secondaryBtn: #D9D9D9;
+  --secondaryBtnHover: #E5E5E5;
+  --secondaryBtnText: #222426;
+  --text: #222426;
+  --title: #FFF;
+  --secondaryBg: hwb(219 10% 82%);
+  --toggle: #19202D;
+  --toggleBg : #ffffff;
+  --light-grey: #1167bd;
+  --gray: #9DAEC2;
+  --dark-gray: #6E8098;
+  --bg: rgba(34, 36, 38, 0);  
+}

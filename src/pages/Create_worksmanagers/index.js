@@ -10,24 +10,27 @@ const Create_worksmanagers = () => {
     
 
     return (
-        <div className='create-worksmanagers-page'>
-            <Header/>
-            <div className='create-worksmanagers-container'>
-                <h1>Create new workmanager</h1>
-                <form className='create-worksmanagers-form'>
-                    <Input placeholder='First name' type='text' id='firstName'/>
-                    <Input placeholder='Last name' type='text' id='lastName'/>
-                    <Input placeholder='Email' type='email' id='email'/>
+        <>
+            <Header />
+            <div className='create-worksmanagers-page'>
 
-                    <Input placeholder='Login' type='text' id='login'/>
-                    <Input placeholder='Password' type='password' id='password'/>
-                    <div className='cta-container'>
-                        <input className='btn1' type='submit' value='Create'/>
-                        <Button className='btn1' value='Cancel' onClick={()=>navigate('/')}/>
-                    </div>
-                </form>
+                <div className='create-worksmanagers-container'>
+                    <h1>Créer un conducteur de travaux :</h1>
+                    <form className='create-worksmanagers-form'>
+                        <Input placeholder='Prénom' type='text' id='firstName' />
+                        <Input placeholder='Nom' type='text' id='lastName' />
+                        <Input placeholder='Email' type='email' id='email' />
+
+                        <Input placeholder='Login' type='text' id='login' />
+                        <Input placeholder='Mot de passe' type='password' id='password' />
+                        <div className='cta-container'>
+                            <input className='btn1' type='submit' value='Créer' />
+                            <Button className='btn1' value='Annuler' onClick={() => navigate('/')} />
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
