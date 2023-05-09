@@ -48,16 +48,16 @@ function App() {
 
           <Route path="/foldingchoice" element={<Folding/>} />
 
-          <Route path="/foldingchoice/Bavettes" element={<Couvertineschoice/>} />
-          <Route path="/foldingchoice/Bavettes/1" element={<FirstCouvertines/>} />
-          <Route path="/foldingchoice/Bavettes/2" element={<SecondCouvertines/>} />
-          <Route path="/foldingchoice/Bavettes/3" element={<ThirstCouvertines/>} />
+          <Route path="/foldingchoice/Bavettes" element={<Bavetteschoice/>} />
+          <Route path="/foldingchoice/Bavettes/1" element={<FirstBavettes/>} />
+          <Route path="/foldingchoice/Bavettes/2" element={<SecondBavettes/>} />
+          <Route path="/foldingchoice/Bavettes/3" element={<ThirstBavettes/>} />
 
 
-          <Route path="/foldingchoice/Couvertines" element={<Bavetteschoice/>} />
-          <Route path="/foldingchoice/Couvertines/1" element={<FirstBavettes/>} />
-          <Route path="/foldingchoice/Couvertines/2" element={<SecondBavettes/>} />
-          <Route path="/foldingchoice/Couvertines/3" element={<ThirstBavettes/>} />
+          <Route path="/foldingchoice/Couvertines" element={<Couvertineschoice/>} />
+          <Route path="/foldingchoice/Couvertines/1" element={<FirstCouvertines/>} />
+          <Route path="/foldingchoice/Couvertines/2" element={<SecondCouvertines/>} />
+          <Route path="/foldingchoice/Couvertines/3" element={<ThirstCouvertines/>} />
 
         </Routes>
       </div>
