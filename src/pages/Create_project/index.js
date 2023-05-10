@@ -61,7 +61,7 @@ function Create_project() {
                 id : ${worksiteData.id}.
                 Nom : ${worksite_name}.
                 Adresse : ${street}, ${postal_code} ${city}.`);
-                navigate('/');
+                navigate('/foldingchoice');
             } else {
                 alert(`Une erreur est survenue lors de la création du chantier.`);
             }
@@ -82,7 +82,7 @@ function Create_project() {
                         <Input className="input input_c" value={worksite_name} type="text" placeholder='Nom du chantier' onChange={(e) => setWorksite_name(e.target.value)} required />
                         <Input className="input input_a" value={street} type="text" placeholder='Numéro et nom de la rue' onChange={(e) => setStreet(e.target.value)} required />
                         <div className='input_bot'>
-                            <Input className="input input_p" value={postal_code} type="number" placeholder='Code postal' onChange={(e) => setPostal_code(e.target.value)} required />
+                            <Input className="input input_p" value={postal_code} type="text" maxlength="15" placeholder='Code postal' onChange={(e) => setPostal_code(e.target.value)} required />
                             <Input className="input input_v" value={city} type="text" placeholder=' Ville' onChange={(e) => setCity(e.target.value)} required />
                         </div>
                     </div>

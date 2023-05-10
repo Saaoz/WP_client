@@ -17,15 +17,6 @@
     margin: 4rem;
 }
 
-.input_c, .input_a {
-    width: 42.5rem;
-    height: 5rem;
-}
-
-.input_p{
-    width: 1.3rem;
-}
-
 .input_zone{
     display: flex;
     flex-direction: column;

@@ -7,8 +7,6 @@
     justify-content: center;
 }
 
-
-
 .create-worksmanagers-container{
     background-color: var(--bg);
     border-radius: 1rem;
@@ -29,11 +27,17 @@
     gap: 3rem;
 }
 
+.create-worksmanagers-form .input-container{
+    width: 100%;
+}
+
 .cta-container {
     display: flex;
     justify-content: space-around;
     gap: 5rem;
 }
+
+
 
 @media screen and (max-width: 580px) {
     .cta-container {

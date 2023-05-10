@@ -1,0 +1,106 @@
+.dim {
+    width: 7rem;
+    text-align: center;
+    padding: 1rem;
+    border: 0;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.dim::-webkit-outer-spin-button,
+.dim::-webkit-inner-spin-button,
+.info::-webkit-outer-spin-button,
+.info::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.dim[type=number],.info[type=number] {
+    -moz-appearance: textfield;
+}
+
+.info{
+    width: 10rem;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.folding-container th {
+    text-align: center;
+    width: 8.5rem;
+}
+
+.form-bib {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+.form-content {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    gap: 2rem;
+}
+
+.info-folding {
+    width: 26rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.input-content {
+    display: flex;
+    justify-content: space-between;
+}
+.input-content label {
+    align-self: center;
+    color: var(--title);
+}
+
+.form-schema {
+    width:35rem;
+    height: 48rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    background-color: var(--bg-folding);
+    border-radius: 1rem;
+}
+
+.form-schema input {
+    position: absolute;
+}
+.dim1 {
+    top: 16rem;
+    right: 1rem;
+}
+.dim2 {
+    top: 7rem;
+    left: 14.5rem;
+}
+.dim3 {
+    bottom: 17rem;
+    left: 1rem;
+}
+.dim4 {
+    bottom: 9rem;
+    left: 16rem;
+}
+
+.form-cta {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
