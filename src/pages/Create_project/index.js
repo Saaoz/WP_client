@@ -56,12 +56,39 @@ function Create_project() {
                 body: JSON.stringify(worksite)
             });
             const worksiteData = await worksiteResponse.json();
+            
             if (worksiteResponse.ok) {
                 alert(`Le chantier a été créé avec succès avec : 
                 id : ${worksiteData.id}.
                 Nom : ${worksite_name}.
                 Adresse : ${street}, ${postal_code} ${city}.`);
-                navigate('/foldingchoice');
+
+                // Fetch order sheet with address and worksite IDs
+                const orderSheet = {
+                    "worksite_id": worksiteData.id,
+                    "worksite_address_id": addressId
+                    
+                };
+
+                const orderSheetResponse = await fetch('http://localhost:8080/api/order_sheets/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderSheet)
+                    
+                });
+                const orderSheetData = await orderSheetResponse.json();
+                const orderSheetId = orderSheetData.id;
+
+                if (orderSheetResponse.ok) {
+                
+                    alert('order_sheet a été créé avec succès.');
+
+                    navigate('/foldingchoice', { state: { projectId: orderSheetId } });
+                } else {
+                    alert('Une erreur est survenue lors de la création de order_sheet.');
+                }
             } else {
                 alert(`Une erreur est survenue lors de la création du chantier.`);
             }
