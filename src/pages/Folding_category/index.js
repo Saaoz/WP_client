@@ -1,17 +1,19 @@
 import './index.css';
 import Button from '../../components/Button';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header';
+
+import couvertine from '../../sources/imgs/couvertine.svg'
+import bavette from '../../sources/imgs/bib.svg'
 
 
 const Folding_category = () => {
     const navigate = useNavigate();
 
-    const [order, setOrder] = useState([]);
-
     return (
         <div className='folding-category-page'>
+            <Header />
             <div className='folding-category-container'>
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
@@ -20,13 +22,16 @@ const Folding_category = () => {
                 <h2>Choix du pliage</h2>
 
                 <div className='img-container'>
-                    <Link to='/foldingchoice/Couvertines'><img src='../../../sources/imgs/couvertine.svg' alt='couvertines' /></Link>
-                    <Link to='/foldingchoice/Bavettes'><img src='../../../sources/imgs/bib.svg' alt='bavettes' /></Link>
+                    <Link to='/foldingchoice/Couvertines'>
+                        <img src={couvertine} alt='couvertines' />
+                    </Link>
+                    <Link to='/foldingchoice/Bavettes'>
+                        <img src={bavette} alt='bavettes' />
+                    </Link>
                 </div>
             </div>
         </div>
     );
 }
-
 
 export default Folding_category;

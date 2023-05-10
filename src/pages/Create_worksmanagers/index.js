@@ -71,7 +71,11 @@ const Create_worksmanagers = () => {
                 <div className='create-worksmanagers-container'>
                     <h1>Créer un conducteur de travaux :</h1>
                     <form className='create-worksmanagers-form'>
-                        <Input placeholder='Prénom' type='text' id='firstName' onChange={(e) => setFirstName(e.target.value)} required/>
+                        <Input 
+                            placeholder='Prénom' 
+                            type='text' 
+                            id='firstName' 
+                            onChange={(e) => setFirstName(e.target.value)} required/>
                         <Input placeholder='Nom' type='text' id='lastName' onChange={(e) => setLastName(e.target.value)} required/>
                         <Input placeholder='Email' type='email' id='email' onChange={(e) => setEmail(e.target.value)} required/>
 
