@@ -1,5 +1,16 @@
+.folding-container{
+    background-color: var(--bg);
+    border-radius: 2rem;
+    padding: 4rem 4rem 6rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+}
 .dim {
-    width: 7rem;
+    width: 6rem;
     text-align: center;
     padding: 1rem;
     border: 0;
@@ -81,15 +92,15 @@
 }
 .dim1 {
     top: 16rem;
-    right: 1rem;
+    right: 2rem;
 }
 .dim2 {
-    top: 7rem;
-    left: 14.5rem;
+    top: 7.5rem;
+    left: 15rem;
 }
 .dim3 {
     bottom: 17rem;
-    left: 1rem;
+    left: 2rem;
 }
 .dim4 {
     bottom: 9rem;
@@ -103,4 +114,10 @@
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.folding-container table {
+    background-color: var(--bg-folding);
+    border-radius: 2rem;
+
 }

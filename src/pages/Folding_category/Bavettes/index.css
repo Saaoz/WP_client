@@ -9,8 +9,8 @@
     padding: 5rem;
 }
 
-.folding-container{
-    background-color: var(--bg);
+.folding-container-choice {
+    background-color: var(--bg-folding);
     border-radius: 2rem;
     padding: 4rem 4rem 6rem 4rem;
     display: flex;

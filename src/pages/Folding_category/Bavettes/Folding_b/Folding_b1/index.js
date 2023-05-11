@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 import bavette1 from '../../../../../sources/imgs/bib1cotation.svg'
 
-function First_folding_b() {
+const First_folding_b = () => {
     const navigate = useNavigate();
 
     const [index, setIndex] = useState('A');
@@ -25,22 +25,46 @@ function First_folding_b() {
     const [inputStatus, setInputStatus] = useState(true);
     const [checked, setChecked] = useState(true);
 
+    const handleChangeDim1 = (event) => {
+        const value = event.target.value;
+        const newValue = value === "" ? 0 : parseFloat(value);
+        setDim1(newValue);
+    };
+    const handleChangeDim2 = (event) => {
+        const value = event.target.value;
+        const newValue = value === "" ? 0 : parseFloat(value);
+        setDim2(newValue);
+    };
+    const handleChangeDim3 = (event) => {
+        const value = event.target.value;
+        const newValue = value === "" ? 0 : parseFloat(value);
+        setDim3(newValue);
+    };
+    const handleChangeDim4 = (event) => {
+        const value = event.target.value;
+        const newValue = value === "" ? 0 : parseFloat(value);
+        setDim4(newValue);
+    };
+
     useEffect(() => {
         //calcul du développé
         
         if(dim2!==''){
             
         setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4));
+        } else if (isNaN(dim2)){
+            setDim2(0);
+            setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4));
         }
 
         //si tous les champs sont remplis on libère la function valider
-        if(dim2!==''&& ral!=='' && quantity!==''){
+        if(dim1!=='' && dim2!=='' && dim3!=='' && dim4 !=='' && epaisseur!=='' && type!=='' && ral!=='' && longueur!=='' && developpe!=='' && quantity!==''){
             setInputStatus(false);
         }else{
             setInputStatus(true);
         };
 
-    },[dim1,dim2,dim3,dim4,ral,quantity]);
+    },[dim1,dim2,dim3,dim4,epaisseur,type,ral,longueur,developpe,quantity]);
 
     //si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours faire un GET sur l'ID de ordersheet pour avoir le tableau de pliage et selon la longueur définir la lettre de l'index
 
@@ -90,7 +114,7 @@ function First_folding_b() {
                 "order_sheet_id": 1
             };
 
-            const foldingResponse = await fetch('http://localhost:8080/api/folding', {
+            const foldingResponse = await fetch('http://localhost:8080/api/foldings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -132,10 +156,6 @@ function First_folding_b() {
             alert('La création du pliage a été annulée.');
         }
     }
-
-
-
-    
 
     return (
 
@@ -239,28 +259,28 @@ function First_folding_b() {
                             <Input 
                                 className='input dim dim1' 
                                 type='number' 
-                                onChange={(e) => setDim1(parseInt(e.target.value))}
+                                onChange={(e) => handleChangeDim1(e)}
                                 value={dim1}
                                 required
                             />
                             <Input 
                                 className='input dim dim2' 
                                 type='number' 
-                                onChange={(e) => setDim2(parseInt(e.target.value))} 
+                                onChange={(e) => handleChangeDim2(e)} 
                                 value={dim2}
                                 required
                             />
                             <Input 
                                 className='input dim dim3' 
                                 type='number' 
-                                onChange={(e) => setDim3(parseInt(e.target.value))} 
+                                onChange={(e) => handleChangeDim3(e)} 
                                 value={dim3}
                                 required
                             />
                             <Input 
                                 className='input dim dim4' 
                                 type='number' 
-                                onChange={(e) => setDim4(parseInt(e.target.value))}
+                                onChange={(e) => handleChangeDim4(e)}
                                 value={dim4}
                                 required
                             />
@@ -275,7 +295,6 @@ function First_folding_b() {
                             onChange={() => setChecked(!checked)}
                         />
                     </div>
-                    console.log(tintin);
                 </form>
             </div>
 

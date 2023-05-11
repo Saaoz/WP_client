@@ -15,7 +15,7 @@ function Bavettes_choice() {
     return (
         <div className='folding-page'>
             <Header />
-            <div className='folding-container'>
+            <div className='folding-container-choice'>
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
