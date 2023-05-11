@@ -1,15 +1,29 @@
 import './index.css';
 import Button from '../../components/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 
-import couvertine from '../../sources/imgs/couvertine.svg'
-import bavette from '../../sources/imgs/bib.svg'
-
+import couvertine from '../../sources/imgs/couvertine.svg';
+import bavette from '../../sources/imgs/bib.svg';
 
 const Folding_category = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const searchParams = new URLSearchParams(location.search);
+    const projectIdFromUrl = searchParams.get('projectId');
+
+    const projectId = projectIdFromUrl || location.state?.projectId;
+
+    if (projectId && projectId !== projectIdFromUrl) {
+        searchParams.set('projectId', projectId);
+        navigate(`?${searchParams.toString()}`);
+    }
+
+    const linkToCouv = `/foldingchoice/Couvertines?projectId=${projectId}`;
+    const linkToBav = `/foldingchoice/Bavettes?projectId=${projectId}`;
+
 
     return (
         <div className='folding-category-page'>
@@ -22,10 +36,10 @@ const Folding_category = () => {
                 <h2>Choix du pliage</h2>
 
                 <div className='img-container'>
-                    <Link to='/foldingchoice/Couvertines'>
+                    <Link to={linkToCouv}>
                         <img src={couvertine} alt='couvertines' />
                     </Link>
-                    <Link to='/foldingchoice/Bavettes'>
+                    <Link to={linkToBav}>
                         <img src={bavette} alt='bavettes' />
                     </Link>
                 </div>
