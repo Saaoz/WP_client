@@ -14,15 +14,24 @@ const First_folding_c = () => {
 
     // récupération ID
     const location = useLocation();
+
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
-
     const projectId = projectIdFromUrl || location.state?.projectId;
+
+    const projectNameFromUrl = searchParams.get('projectName');
+    const projectName = projectNameFromUrl || location.state?.projectName;
 
     if (projectId && projectId !== projectIdFromUrl) {
         searchParams.set('projectId', projectId);
         navigate(`?${searchParams.toString()}`);
     }
+
+    if (projectName && projectName !== projectNameFromUrl) {
+        searchParams.set('projectName', projectName);
+        navigate(`?${searchParams.toString()}`);
+    }
+
 
     const [index, setIndex] = useState('A');
     const [dim1, setDim1] = useState(20);
@@ -173,7 +182,7 @@ const First_folding_c = () => {
                 Angle 5 : ${foldingData.angle5}.
                 `);
                 if(checked === true){
-                    navigate(`/foldingchoice?projectId=${projectId}`);
+                    navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`);
                 }else{
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
@@ -192,12 +201,12 @@ const First_folding_c = () => {
             <Header />
             <div className='folding-container'>
                 {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <p>{projectName}</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
                 <Button 
                     className='btn1' 
                     value='Retour' 
-                    onClick={() => navigate(`/foldingchoice/Couvertines?projectId=${projectId}`)} 
+                    onClick={() => navigate(`/foldingchoice/Couvertines?projectId=${projectId}&projectName=${projectName}`)} 
                 />
                 <h2>Couvertine 5 plis avec goutte d'eau externe</h2>
                 
