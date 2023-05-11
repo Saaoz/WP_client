@@ -12,27 +12,36 @@ import Header from '../../../components/Header';
 function Bavettes_choice() {
     const navigate = useNavigate();
     const location = useLocation();
+
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
-
     const projectId = projectIdFromUrl || location.state?.projectId;
+
+    const projectNameFromUrl = searchParams.get('projectName');
+    const projectName = projectNameFromUrl || location.state?.projectName;
 
     if (projectId && projectId !== projectIdFromUrl) {
         searchParams.set('projectId', projectId);
         navigate(`?${searchParams.toString()}`);
     }
-    const linkBav1 = `/foldingchoice/Bavettes/1?projectId=${projectId}`;
-    const linkBav2 = `/foldingchoice/Bavettes/2?projectId=${projectId}`;
-    const linkBav3 = `/foldingchoice/Bavettes/3?projectId=${projectId}`;
+
+    if (projectName && projectName !== projectNameFromUrl) {
+        searchParams.set('projectName', projectName);
+        navigate(`?${searchParams.toString()}`);
+    }
+
+    const linkBav1 = `/foldingchoice/Bavettes/1?projectId=${projectId}&projectName=${projectName}`;
+    const linkBav2 = `/foldingchoice/Bavettes/2?projectId=${projectId}&projectName=${projectName}`;
+    const linkBav3 = `/foldingchoice/Bavettes/3?projectId=${projectId}&projectName=${projectName}`;
 
     return (
         <div className='folding-page'>
             <Header />
             <div className='folding-container-choice'>
                 {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <p> {projectName} </p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?projectId=${projectId}`)} />
+                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`)} />
                 <h2>Choix de bavettes</h2>
                 <div className='bib-img-container'>
                     <Link to= {linkBav1} >

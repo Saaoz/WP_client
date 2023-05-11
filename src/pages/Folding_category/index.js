@@ -13,16 +13,24 @@ const Folding_category = () => {
 
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
-
     const projectId = projectIdFromUrl || location.state?.projectId;
-
+    
+    const projectNameFromUrl = searchParams.get('projectName');
+    const projectName = projectNameFromUrl || location.state?.projectName;
+    
     if (projectId && projectId !== projectIdFromUrl) {
-        searchParams.set('projectId', projectId);
-        navigate(`?${searchParams.toString()}`);
+      searchParams.set('projectId', projectId);
+      navigate(`?${searchParams.toString()}`);
+    }
+    
+    if (projectName && projectName !== projectNameFromUrl) {
+      searchParams.set('projectName', projectName);
+      navigate(`?${searchParams.toString()}`);
     }
 
-    const linkToCouv = `/foldingchoice/Couvertines?projectId=${projectId}`;
-    const linkToBav = `/foldingchoice/Bavettes?projectId=${projectId}`;
+    const linkToCouv = `/foldingchoice/Couvertines?projectId=${projectId}&projectName=${projectName}`;
+    const linkToBav = `/foldingchoice/Bavettes?projectId=${projectId}&projectName=${projectName}`;
+    
 
 
     return (
@@ -30,7 +38,7 @@ const Folding_category = () => {
             <Header />
             <div className='folding-container-choice'>
                 {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <p> {projectName} </p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
                 <Button className='btn1' value='Retour' onClick={() => navigate('/')} />
                 <h2>Choix du pliage</h2>
