@@ -25,6 +25,8 @@ import FirstBavettes from './pages/Folding_category/Bavettes/Folding_b/Folding_b
 import SecondBavettes from './pages/Folding_category/Bavettes/Folding_b/Folding_b2/index'
 import ThirstBavettes from './pages/Folding_category/Bavettes/Folding_b/Folding_b3/index'
 
+import Validation from './pages/Validation';
+
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -59,6 +61,8 @@ function App() {
           <Route path="/foldingchoice/Couvertines/2" element={<SecondCouvertines/>} />
           <Route path="/foldingchoice/Couvertines/3" element={<ThirstCouvertines/>} />
 
+        {/* Final production pdf */}
+          <Route path="/pdf" element={<Validation />} />
         </Routes>
       </div>
     </ThemeContext.Provider>

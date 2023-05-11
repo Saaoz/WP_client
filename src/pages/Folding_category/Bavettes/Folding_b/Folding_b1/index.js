@@ -3,7 +3,7 @@ import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
 import Button from '../../../../../components/Button';
 import Checkbox from '../../../../../components/Checkbox';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import bavette1 from '../../../../../sources/imgs/bib1cotation.svg'
@@ -299,6 +299,11 @@ const First_folding_b = () => {
             </div>
 
             <div className='folding-container'>
+                <Button 
+                    className='btn1' 
+                    value='Finaliser' 
+                    onClick={() => navigate('/pdf')} 
+                />
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
                 <h2>Liste des pliages de la demande de prix en cours</h2>
