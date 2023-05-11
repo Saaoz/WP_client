@@ -1,40 +1,79 @@
 import './index.css';
 import Button from '../Button';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-const BuildingCard = ({dataBuilding}) => {
-    //préparation a la navigation
+const BuildingCard = ({ dataBuilding }) => {
     const navigate = useNavigate();
+    const { id, name } = dataBuilding;
+    const [isCreatingOrderSheet, setIsCreatingOrderSheet] = useState(false);
+    const [addressId, setAddressId] = useState('');
 
-    //la card doit avoir pour data :
-    //nom du chantier,
-    //id du chantier,
-    //les inforamations de la dernière demande de prix,
-        //date de la dernière demande de prix,
-        //tous les pliages avec l'id de la demande de prix,
+    useEffect(() => {
+        const fetchWorksiteDetails = async () => {
+            try {
+                const response = await fetch(`http://localhost:8080/api/work_sites/${id}`);
+                if (response.ok) {
+                    const worksiteData = await response.json();
+                    setAddressId(worksiteData.address_id);
+                } else {
+                    console.error('Erreur lors de la récupération des détails du chantier');
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération des détails du chantier :', error);
+            }
+        };
 
+        fetchWorksiteDetails();
+    }, [id]);
 
+    const createOrderSheet = async () => {
+        // Vérifier si la création de l'order sheet est déjà en cours
+        if (isCreatingOrderSheet) {
+            return;
+        }
 
-    //destructuration de dataBuilding
-    const {id, name} = dataBuilding;
-    //prévoir dans dataBuilding : le nom du chantier, l'id du chantier, les demandes de prix déjà passés.
+        setIsCreatingOrderSheet(true);
 
+        const orderSheet = {
+            worksite_id: id,
+            worksite_address_id: addressId,
+            worksite_name: name
+        };
 
+        try {
+            const response = await fetch('http://localhost:8080/api/order_sheets/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(orderSheet)
+            });
+
+            if (response.ok) {
+                const orderSheetData = await response.json();
+                const orderSheetId = orderSheetData.id;
+                alert('order_sheet a été créé avec succès.');
+                navigate(`/foldingchoice/`, { state: { projectId: orderSheetId, projectName: name } });
+            } else {
+                console.error('Erreur lors de la création de l\'order sheet');
+            }
+        } catch (error) {
+            console.error('Erreur lors de la création de l\'order sheet :', error);
+        } finally {
+            setIsCreatingOrderSheet(false);
+        }
+    };
 
     return (
-        <div className ='building-card'>
+        <div className="building-card">
             <h3>{name}</h3>
             <p>Dernière consultation</p>
-            <div className = 'actionCote'>
-                {/* botton pour consulterla dernière demande de prix */}
-                <Button className = 'btn2' value = 'Lire' onClick = {() => navigate(`/chantier_consultation/${id}`)}/>
-                
-                {/* button pour renvoyer la dernière demande de prix */}
-                <Button className = 'btn2' value = 'Renvoyer' onClick = {() => {}}/>
+            <div className="actionCote">
+                <Button className="btn2" value="Lire" onClick={() => navigate(`/chantier_consultation/${id}`)} />
+                <Button className="btn2" value="Renvoyer" onClick={() => { }} />
             </div>
-            {/* button pour la création d'une nouvelle demande de prix envoyant l'id chantier */}
-            <Button className = 'btn1' value = 'Nouv. pliage' onClick = {() => {navigate(`/new_folding/${id}`)}}/>
-
+            <Button className="btn1" value="Nouv. pliage" onClick={createOrderSheet} />
         </div>
     );
 };
