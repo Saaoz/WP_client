@@ -14,13 +14,21 @@ const Second_folding_c = () => {
 
     // récupération ID
     const location = useLocation();
+
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
-
     const projectId = projectIdFromUrl || location.state?.projectId;
+
+    const projectNameFromUrl = searchParams.get('projectName');
+    const projectName = projectNameFromUrl || location.state?.projectName;
 
     if (projectId && projectId !== projectIdFromUrl) {
         searchParams.set('projectId', projectId);
+        navigate(`?${searchParams.toString()}`);
+    }
+
+    if (projectName && projectName !== projectNameFromUrl) {
+        searchParams.set('projectName', projectName);
         navigate(`?${searchParams.toString()}`);
     }
 
@@ -74,23 +82,23 @@ const Second_folding_c = () => {
 
     useEffect(() => {
         //calcul du développé
-        
-        if(dim4!==''){
-            
-        setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4)+parseInt(dim5)+parseInt(dim6));
-        } else if (isNaN(dim4)){
+
+        if (dim4 !== '') {
+
+            setDeveloppe(parseInt(dim1) + parseInt(dim2) + parseInt(dim3) + parseInt(dim4) + parseInt(dim5) + parseInt(dim6));
+        } else if (isNaN(dim4)) {
             setDim4(0);
-            setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4)+parseInt(dim5)+parseInt(dim6));
+            setDeveloppe(parseInt(dim1) + parseInt(dim2) + parseInt(dim3) + parseInt(dim4) + parseInt(dim5) + parseInt(dim6));
         }
 
         //si tous les champs sont remplis on libère la function valider
-        if(dim1!=='' && dim2!=='' && dim3!=='' && dim4 && dim5!=='' && dim6!=='' && epaisseur!=='' && type!=='' && ral!=='' && longueur!=='' && developpe!=='' && quantity!==''){
+        if (dim1 !== '' && dim2 !== '' && dim3 !== '' && dim4 && dim5 !== '' && dim6 !== '' && epaisseur !== '' && type !== '' && ral !== '' && longueur !== '' && developpe !== '' && quantity !== '') {
             setInputStatus(false);
-        }else{
+        } else {
             setInputStatus(true);
         };
 
-    },[dim1,dim2,dim3,dim4,dim5,dim6,epaisseur,type,ral,longueur,developpe,quantity]);
+    }, [dim1, dim2, dim3, dim4, dim5, dim6, epaisseur, type, ral, longueur, developpe, quantity]);
 
     //si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours faire un GET sur l'ID de ordersheet pour avoir le tableau de pliage et selon la longueur définir la lettre de l'index
 
@@ -101,7 +109,7 @@ const Second_folding_c = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const confirmation = window.confirm(`Êtes-vous sûr de vouloir créer le pliage avec les données suivantes :
 
         type : ${type} 
@@ -119,7 +127,7 @@ const Second_folding_c = () => {
 
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
 
-        if(confirmation) {
+        if (confirmation) {
 
             const folding = {
                 "category": "Couvertine 5 plis avec goutte d'eau interne",
@@ -152,7 +160,7 @@ const Second_folding_c = () => {
                 body: JSON.stringify(folding)
             });
             const foldingData = await foldingResponse.json();
-            if(foldingResponse.ok) {
+            if (foldingResponse.ok) {
                 alert(`Le plage a été créé avec succès avec :
                 id : ${foldingData.id}.
                 Catégorie : ${foldingData.category}.
@@ -173,9 +181,9 @@ const Second_folding_c = () => {
                 Angle 4 : ${foldingData.angle4}.
                 Angle 5 : ${foldingData.angle5}.
                 `);
-                if(checked === true){
-                    navigate(`/foldingchoice?projectId=${projectId}`);
-                }else{
+                if (checked === true) {
+                    navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`);
+                } else {
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
                 };
@@ -193,24 +201,24 @@ const Second_folding_c = () => {
             <Header />
             <div className='folding-container'>
                 {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <p>{projectName}</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button 
-                    className='btn1' 
-                    value='Retour' 
-                    onClick={() => navigate(`/foldingchoice/Couvertines?projectId=${projectId}`)} 
+                <Button
+                    className='btn1'
+                    value='Retour'
+                    onClick={() => navigate(`/foldingchoice/Couvertines?projectId=${projectId}&projectName=${projectName}`)}
                 />
                 <h2>Couvertine 5 plis avec goutte d'eau interne</h2>
-                
+
                 <form className='form-bib'>
                     <div className='form-content'>
                         {/* si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours */}
                         <div className='info-folding'>
                             <div className='input-content'>
                                 <label>Pliage:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     inputStatus='true'
                                     value={index}
                                     required
@@ -218,9 +226,9 @@ const Second_folding_c = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Epaiseur (/100):</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     value={epaisseur}
                                     onChange={(e) => setEpaisseur(parseInt(e.target.value))}
                                     required
@@ -228,9 +236,9 @@ const Second_folding_c = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Type:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     value={type}
                                     onChange={(e) => setType(e.target.value)}
                                     required
@@ -238,9 +246,9 @@ const Second_folding_c = () => {
                             </div>
                             <div className='input-content'>
                                 <label>RAL:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     placeholder='RAL'
                                     value={ral}
                                     onChange={(e) => setRal(e.target.value)}
@@ -249,9 +257,9 @@ const Second_folding_c = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Quantité:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     placeholder='Qte'
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
@@ -260,70 +268,70 @@ const Second_folding_c = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Longueur:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     value={longueur}
                                     onChange={(e) => setLongueur(parseInt(e.target.value))}
                                     required
-                                    />
+                                />
                             </div>
                             <div className='input-content'>
                                 <label>Développé:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
-                                    inputStatus='true' 
+                                <Input
+                                    className='input info'
+                                    type='number'
+                                    inputStatus='true'
                                     value={developpe}
                                     required
                                 />
                             </div>
                         </div>
-                        
+
                         <div className='form-schema-coiff'>
                             <div className='bib-img-container'>
                                 <img src={couvertine2} alt='bavettes' className='couvertine-img' />
                             </div>
-                            
+
                             {/* les dimension du pliage */}
-                            <Input 
-                                className='input dim dim1-coiff' 
-                                type='number' 
+                            <Input
+                                className='input dim dim1-coiff'
+                                type='number'
                                 onChange={(e) => handleChangeDim1(e)}
                                 value={dim1}
                                 required
                             />
-                            <Input 
-                                className='input dim dim2-coiff' 
-                                type='number' 
-                                onChange={(e) => handleChangeDim2(e)} 
+                            <Input
+                                className='input dim dim2-coiff'
+                                type='number'
+                                onChange={(e) => handleChangeDim2(e)}
                                 value={dim2}
                                 required
                             />
-                            <Input 
-                                className='input dim dim3-coiff' 
-                                type='number' 
-                                onChange={(e) => handleChangeDim3(e)} 
+                            <Input
+                                className='input dim dim3-coiff'
+                                type='number'
+                                onChange={(e) => handleChangeDim3(e)}
                                 value={dim3}
                                 required
                             />
-                            <Input 
-                                className='input dim dim4-coiff' 
-                                type='number' 
+                            <Input
+                                className='input dim dim4-coiff'
+                                type='number'
                                 onChange={(e) => handleChangeDim4(e)}
                                 value={dim4}
                                 required
                             />
-                            <Input 
-                                className='input dim dim5-coiff' 
-                                type='number' 
+                            <Input
+                                className='input dim dim5-coiff'
+                                type='number'
                                 onChange={(e) => handleChangeDim5(e)}
                                 value={dim5}
                                 required
                             />
-                            <Input 
-                                className='input dim dim6-coiff' 
-                                type='number' 
+                            <Input
+                                className='input dim dim6-coiff'
+                                type='number'
                                 onChange={(e) => handleChangeDim6(e)}
                                 value={dim6}
                                 required
@@ -331,10 +339,10 @@ const Second_folding_c = () => {
                         </div>
                     </div>
                     <div className='form-cta'>
-                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus}/> 
-                        <Checkbox 
-                            className='checkbox' 
-                            value='Ajouter un pliage' 
+                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus} />
+                        <Checkbox
+                            className='checkbox'
+                            value='Ajouter un pliage'
                             status={checked}
                             onChange={() => setChecked(!checked)}
                         />

@@ -25,7 +25,6 @@ function Create_project() {
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
 
         if (confirmation) {
-
             const address = {
                 "street": street,
                 "postal_code": postal_code,
@@ -56,18 +55,17 @@ function Create_project() {
                 body: JSON.stringify(worksite)
             });
             const worksiteData = await worksiteResponse.json();
-            
+
             if (worksiteResponse.ok) {
                 alert(`Le chantier a été créé avec succès avec : 
                 id : ${worksiteData.id}.
                 Nom : ${worksite_name}.
                 Adresse : ${street}, ${postal_code} ${city}.`);
 
-                // Fetch order sheet with address and worksite IDs
                 const orderSheet = {
                     "worksite_id": worksiteData.id,
-                    "worksite_address_id": addressId
-                    
+                    "worksite_address_id": addressId,
+                    "worksite_name": worksite_name
                 };
 
                 const orderSheetResponse = await fetch('http://localhost:8080/api/order_sheets/', {
@@ -76,16 +74,14 @@ function Create_project() {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(orderSheet)
-                    
                 });
                 const orderSheetData = await orderSheetResponse.json();
                 const orderSheetId = orderSheetData.id;
 
                 if (orderSheetResponse.ok) {
-                
                     alert('order_sheet a été créé avec succès.');
 
-                    navigate('/foldingchoice', { state: { projectId: orderSheetId } });
+                    navigate('/foldingchoice', { state: { projectId: orderSheetId, projectName: worksite_name } });
                 } else {
                     alert('Une erreur est survenue lors de la création de order_sheet.');
                 }
@@ -96,8 +92,6 @@ function Create_project() {
             alert(`La création du chantier a été annulée.`);
         }
     }
-
-
 
     return (
         <>

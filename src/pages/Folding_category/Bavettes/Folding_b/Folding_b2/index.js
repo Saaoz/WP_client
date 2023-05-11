@@ -14,13 +14,21 @@ const Second_folding_b = () => {
 
     // récupération ID
     const location = useLocation();
+
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
-
     const projectId = projectIdFromUrl || location.state?.projectId;
+
+    const projectNameFromUrl = searchParams.get('projectName');
+    const projectName = projectNameFromUrl || location.state?.projectName;
 
     if (projectId && projectId !== projectIdFromUrl) {
         searchParams.set('projectId', projectId);
+        navigate(`?${searchParams.toString()}`);
+    }
+
+    if (projectName && projectName !== projectNameFromUrl) {
+        searchParams.set('projectName', projectName);
         navigate(`?${searchParams.toString()}`);
     }
 
@@ -152,7 +160,7 @@ const Second_folding_b = () => {
                 Angle 5 : ${foldingData.angle5}.
                 `);
                 if (checked === true) {
-                    navigate(`/foldingchoice?projectId=${projectId}`);
+                    navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`);
                 } else {
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
@@ -174,12 +182,12 @@ const Second_folding_b = () => {
             <Header />
             <div className='folding-container'>
                 {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <p>{projectName}</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
                 <Button
                     className='btn1'
                     value='Retour'
-                    onClick={() => navigate(`/foldingchoice/Bavettes?projectId=${projectId}`)}
+                    onClick={() => navigate(`/foldingchoice/Bavettes?projectId=${projectId}&projectName=${projectName}`)}
                 />
                 <h2>Bavette 3 plis avec goutte d'eau interne</h2>
 
