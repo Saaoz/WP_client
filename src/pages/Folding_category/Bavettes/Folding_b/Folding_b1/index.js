@@ -3,13 +3,27 @@ import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
 import Button from '../../../../../components/Button';
 import Checkbox from '../../../../../components/Checkbox';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import bavette1 from '../../../../../sources/imgs/bib1cotation.svg'
 
 const First_folding_b = () => {
     const navigate = useNavigate();
+
+    // récupération ID
+    const location = useLocation();
+
+    const searchParams = new URLSearchParams(location.search);
+    const projectIdFromUrl = searchParams.get('projectId');
+
+    const projectId = projectIdFromUrl || location.state?.projectId;
+
+    if (projectId && projectId !== projectIdFromUrl) {
+        searchParams.set('projectId', projectId);
+        navigate(`?${searchParams.toString()}`);
+    }
+
 
     const [index, setIndex] = useState('A');
     const [dim1, setDim1] = useState(40);
@@ -48,23 +62,23 @@ const First_folding_b = () => {
 
     useEffect(() => {
         //calcul du développé
-        
-        if(dim2!==''){
-            
-        setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4));
-        } else if (isNaN(dim2)){
+
+        if (dim2 !== '') {
+
+            setDeveloppe(parseInt(dim1) + parseInt(dim2) + parseInt(dim3) + parseInt(dim4));
+        } else if (isNaN(dim2)) {
             setDim2(0);
-            setDeveloppe(parseInt(dim1)+parseInt(dim2)+parseInt(dim3)+parseInt(dim4));
+            setDeveloppe(parseInt(dim1) + parseInt(dim2) + parseInt(dim3) + parseInt(dim4));
         }
 
         //si tous les champs sont remplis on libère la function valider
-        if(dim1!=='' && dim2!=='' && dim3!=='' && dim4 !=='' && epaisseur!=='' && type!=='' && ral!=='' && longueur!=='' && developpe!=='' && quantity!==''){
+        if (dim1 !== '' && dim2 !== '' && dim3 !== '' && dim4 !== '' && epaisseur !== '' && type !== '' && ral !== '' && longueur !== '' && developpe !== '' && quantity !== '') {
             setInputStatus(false);
-        }else{
+        } else {
             setInputStatus(true);
         };
 
-    },[dim1,dim2,dim3,dim4,epaisseur,type,ral,longueur,developpe,quantity]);
+    }, [dim1, dim2, dim3, dim4, epaisseur, type, ral, longueur, developpe, quantity]);
 
     //si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours faire un GET sur l'ID de ordersheet pour avoir le tableau de pliage et selon la longueur définir la lettre de l'index
 
@@ -75,7 +89,7 @@ const First_folding_b = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         const confirmation = window.confirm(`Êtes-vous sûr de vouloir créer le pliage avec les données suivantes :
 
         type : ${type} 
@@ -89,7 +103,7 @@ const First_folding_b = () => {
 
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
 
-        if(confirmation) {
+        if (confirmation) {
 
             const folding = {
                 "category": "Bavette 3 plis avec goutte d'eau externe",
@@ -122,7 +136,7 @@ const First_folding_b = () => {
                 body: JSON.stringify(folding)
             });
             const foldingData = await foldingResponse.json();
-            if(foldingResponse.ok) {
+            if (foldingResponse.ok) {
                 alert(`Le plage a été créé avec succès avec :
                 id : ${foldingData.id}.
                 Catégorie : ${foldingData.category}.
@@ -143,9 +157,9 @@ const First_folding_b = () => {
                 Angle 4 : ${foldingData.angle4}.
                 Angle 5 : ${foldingData.angle5}.
                 `);
-                if(checked === true){
-                    navigate('/foldingchoice');
-                }else{
+                if (checked === true) {
+                    navigate(`/foldingchoice?projectId=${projectId}`);
+                } else {
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
                 };
@@ -165,22 +179,22 @@ const First_folding_b = () => {
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button 
-                    className='btn1' 
-                    value='Retour' 
-                    onClick={() => navigate('/')} 
+                <Button
+                    className='btn1'
+                    value='Retour'
+                    onClick={() => navigate(`/foldingchoice/Bavettes?projectId=${projectId}`)}
                 />
                 <h2>Bavette 3 plis avec goutte d'eau externe</h2>
-                
+
                 <form className='form-bib'>
                     <div className='form-content'>
                         {/* si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours */}
                         <div className='info-folding'>
                             <div className='input-content'>
                                 <label>Pliage:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     inputStatus='true'
                                     value={index}
                                     required
@@ -188,9 +202,9 @@ const First_folding_b = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Epaiseur (/100):</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     value={epaisseur}
                                     onChange={(e) => setEpaisseur(parseInt(e.target.value))}
                                     required
@@ -198,9 +212,9 @@ const First_folding_b = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Type:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     value={type}
                                     onChange={(e) => setType(e.target.value)}
                                     required
@@ -208,9 +222,9 @@ const First_folding_b = () => {
                             </div>
                             <div className='input-content'>
                                 <label>RAL:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='text' 
+                                <Input
+                                    className='input info'
+                                    type='text'
                                     placeholder='RAL'
                                     value={ral}
                                     onChange={(e) => setRal(e.target.value)}
@@ -219,9 +233,9 @@ const First_folding_b = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Quantité:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     placeholder='Qte'
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
@@ -230,56 +244,56 @@ const First_folding_b = () => {
                             </div>
                             <div className='input-content'>
                                 <label>Longueur:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
+                                <Input
+                                    className='input info'
+                                    type='number'
                                     value={longueur}
                                     onChange={(e) => setLongueur(parseInt(e.target.value))}
                                     required
-                                    />
+                                />
                             </div>
                             <div className='input-content'>
                                 <label>Développé:</label>
-                                <Input 
-                                    className='input info' 
-                                    type='number' 
-                                    inputStatus='true' 
+                                <Input
+                                    className='input info'
+                                    type='number'
+                                    inputStatus='true'
                                     value={developpe}
                                     required
                                 />
                             </div>
                         </div>
-                        
+
                         <div className='form-schema'>
                             <div className='bib-img-container'>
                                 <img src={bavette1} alt='bavettes' />
                             </div>
-                            
+
                             {/* les dimension du pliage */}
-                            <Input 
-                                className='input dim dim1' 
-                                type='number' 
+                            <Input
+                                className='input dim dim1'
+                                type='number'
                                 onChange={(e) => handleChangeDim1(e)}
                                 value={dim1}
                                 required
                             />
-                            <Input 
-                                className='input dim dim2' 
-                                type='number' 
-                                onChange={(e) => handleChangeDim2(e)} 
+                            <Input
+                                className='input dim dim2'
+                                type='number'
+                                onChange={(e) => handleChangeDim2(e)}
                                 value={dim2}
                                 required
                             />
-                            <Input 
-                                className='input dim dim3' 
-                                type='number' 
-                                onChange={(e) => handleChangeDim3(e)} 
+                            <Input
+                                className='input dim dim3'
+                                type='number'
+                                onChange={(e) => handleChangeDim3(e)}
                                 value={dim3}
                                 required
                             />
-                            <Input 
-                                className='input dim dim4' 
-                                type='number' 
+                            <Input
+                                className='input dim dim4'
+                                type='number'
                                 onChange={(e) => handleChangeDim4(e)}
                                 value={dim4}
                                 required
@@ -287,10 +301,10 @@ const First_folding_b = () => {
                         </div>
                     </div>
                     <div className='form-cta'>
-                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus}/> 
-                        <Checkbox 
-                            className='checkbox' 
-                            value='Ajouter un pliage' 
+                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus} />
+                        <Checkbox
+                            className='checkbox'
+                            value='Ajouter un pliage'
                             status={checked}
                             onChange={() => setChecked(!checked)}
                         />

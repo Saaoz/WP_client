@@ -3,7 +3,7 @@ import Header from '../../../../../components/Header';
 import Input from '../../../../../components/Input';
 import Button from '../../../../../components/Button';
 import Checkbox from '../../../../../components/Checkbox';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import couvertine2 from '../../../../../sources/imgs/coif2cotation.svg'
@@ -11,6 +11,19 @@ import couvertine2 from '../../../../../sources/imgs/coif2cotation.svg'
 
 const Second_folding_c = () => {
     const navigate = useNavigate();
+
+    // récupération ID
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const projectIdFromUrl = searchParams.get('projectId');
+
+    const projectId = projectIdFromUrl || location.state?.projectId;
+
+    if (projectId && projectId !== projectIdFromUrl) {
+        searchParams.set('projectId', projectId);
+        navigate(`?${searchParams.toString()}`);
+    }
+
 
     const [index, setIndex] = useState('A');
     const [dim1, setDim1] = useState(20);
@@ -161,7 +174,7 @@ const Second_folding_c = () => {
                 Angle 5 : ${foldingData.angle5}.
                 `);
                 if(checked === true){
-                    navigate('/foldingchoice');
+                    navigate(`/foldingchoice?projectId=${projectId}`);
                 }else{
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
@@ -185,7 +198,7 @@ const Second_folding_c = () => {
                 <Button 
                     className='btn1' 
                     value='Retour' 
-                    onClick={() => navigate('/')} 
+                    onClick={() => navigate(`/foldingchoice/Couvertines?projectId=${projectId}`)} 
                 />
                 <h2>Couvertine 5 plis avec goutte d'eau interne</h2>
                 
