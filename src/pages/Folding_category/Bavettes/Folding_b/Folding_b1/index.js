@@ -320,6 +320,11 @@ const First_folding_b = () => {
             </div>
 
             <div className='folding-container'>
+                <Button 
+                    className='btn1' 
+                    value='Finaliser' 
+                    onClick={() => navigate('/pdf')} 
+                />
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
                 <h2>Liste des pliages de la demande de prix en cours</h2>
