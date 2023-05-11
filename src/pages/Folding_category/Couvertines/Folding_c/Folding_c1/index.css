@@ -1,0 +1,46 @@
+.form-schema-coiff {
+
+        width:45rem;
+        height: 48rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 1rem;
+        background-color: var(--bg-folding);
+        border-radius: 1rem;
+    
+}
+.form-schema-coiff input {
+    position: absolute;
+}
+.couvertine-img {
+    width: 95%;
+}
+.dim1-coiff {
+    bottom: 11rem;
+    right: 7rem;
+}
+.dim2-coiff {
+    bottom: 17rem;
+    right: 0rem;
+}
+.dim3-coiff {
+    bottom: 24rem;
+    right: 0rem;
+}
+.dim4-coiff {
+    top: 9rem;
+    left: 20rem;
+}
+.dim5-coiff {
+    top: 23rem;
+    left: 0rem;
+}
+.dim6-coiff {
+    bottom: 11rem;
+    left: 10rem;
+}
+
+

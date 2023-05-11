@@ -14,7 +14,7 @@ const Folding_category = () => {
     return (
         <div className='folding-category-page'>
             <Header />
-            <div className='folding-category-container'>
+            <div className='folding-container-choice'>
                 {/* voir comment ajouter le nom du chantier */}
                 <p>nom du chantier!!</p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
