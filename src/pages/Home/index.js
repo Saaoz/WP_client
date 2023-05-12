@@ -11,6 +11,7 @@ function Home() {
         <div className="home-container" >
             <Header />
             <div className='home-content'>
+                {/* quand le système de login sera en place, envoyer vers le login avant de pouvoir accéder aux pages */}
                 <Link to="/createproject" className='Create'>
                     <Button className = 'btn-home-newWorksite' value = 'Nouveau chantier'/>
                 </Link>

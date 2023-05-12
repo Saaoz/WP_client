@@ -39,7 +39,7 @@
         flex-direction: column;
     }
     .btn_zone{
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 2rem;
     }
     .formulaire {

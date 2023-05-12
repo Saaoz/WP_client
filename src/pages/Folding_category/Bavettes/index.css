@@ -5,21 +5,11 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    margin-top: 8rem;
+    margin-top: 4rem;
     padding: 5rem;
 }
 
-.folding-container-choice {
-    background-color: var(--bg-folding);
-    border-radius: 2rem;
-    padding: 4rem 4rem 6rem 4rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3rem;
-    position: relative;
-}
+
 
 .bib-img-container {
     width: 100%;

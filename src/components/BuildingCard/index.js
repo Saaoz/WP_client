@@ -1,6 +1,6 @@
 import './index.css';
 import Button from '../Button';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const BuildingCard = ({ dataBuilding }) => {
@@ -53,7 +53,6 @@ const BuildingCard = ({ dataBuilding }) => {
             if (response.ok) {
                 const orderSheetData = await response.json();
                 const orderSheetId = orderSheetData.id;
-                alert('order_sheet a été créé avec succès.');
                 navigate(`/foldingchoice/`, { state: { projectId: orderSheetId, projectName: name } });
             } else {
                 console.error('Erreur lors de la création de l\'order sheet');
@@ -68,12 +67,9 @@ const BuildingCard = ({ dataBuilding }) => {
     return (
         <div className="building-card">
             <h3>{name}</h3>
-            <p>Dernière consultation</p>
-            <div className="actionCote">
-                <Button className="btn2" value="Lire" onClick={() => navigate(`/chantier_consultation/${id}`)} />
-                <Button className="btn2" value="Renvoyer" onClick={() => { }} />
-            </div>
-            <Button className="btn1" value="Nouv. pliage" onClick={createOrderSheet} />
+            {/* remplacer under_construction par le lien de la consultation quand elle sera créé type /chantier_consultation/${id} */}
+            <p>Lire la : <Link to={`/under_construction`}>Dernière consultation</Link></p>
+            <Button className="btn1" value="Nouv. demande de prix" onClick={createOrderSheet} />
         </div>
     );
 };

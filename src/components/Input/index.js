@@ -1,6 +1,6 @@
 import './index.css';
 
-const Input = ({ placeholder, type, id, onChange, value, maxlength, className,inputStatus, max}) => {
+const Input = ({ placeholder, type, id, onChange, value, maxlength, className,inputStatus, min, max}) => {
 
         return (
 
@@ -14,6 +14,7 @@ const Input = ({ placeholder, type, id, onChange, value, maxlength, className,in
                         value={value}
                         maxLength={maxlength ? maxlength : null}
                         disabled={inputStatus ? true : false}
+                        min={min? min : null}
                         max={max? max : null}
                 />
         </div>

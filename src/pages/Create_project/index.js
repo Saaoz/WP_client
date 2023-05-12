@@ -17,6 +17,7 @@ function Create_project() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // remplacer les alerts par des modales de confirmation
         const confirmation = window.confirm(`Êtes-vous sûr de vouloir créer un nouveau chantier avec les données suivantes :
     
         Nom du chantier : ${worksite_name}
@@ -24,13 +25,14 @@ function Create_project() {
         
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
 
+        // si confirmation, création de l'objet address liée au chantier
         if (confirmation) {
             const address = {
                 "street": street,
                 "postal_code": postal_code,
                 "city": city
             };
-
+            // on envoie l'objet address en fetchant l'API avec la méthode POST
             const addressResponse = await fetch('http://localhost:8080/api/addresses/', {
                 method: 'POST',
                 headers: {
@@ -41,12 +43,14 @@ function Create_project() {
             const addressData = await addressResponse.json();
             const addressId = addressData.id;
 
+            // une fois l'adresse postée en DB, on crée l'objet worksite grâce à l'adresse_id de l'adresse
             const worksite = {
                 "name": worksite_name,
                 "works_manager_id": 5,
                 "address_id": addressId
             };
 
+            // on envoie l'objet worksite en fetchant l'API avec la méthode POST
             const worksiteResponse = await fetch('http://localhost:8080/api/work_sites/', {
                 method: 'POST',
                 headers: {
@@ -56,18 +60,21 @@ function Create_project() {
             });
             const worksiteData = await worksiteResponse.json();
 
+            // si le chantier est bien posté, on confirme à l'utilisateur
             if (worksiteResponse.ok) {
                 alert(`Le chantier a été créé avec succès avec : 
                 id : ${worksiteData.id}.
                 Nom : ${worksite_name}.
                 Adresse : ${street}, ${postal_code} ${city}.`);
 
+                // puis on crée l'objet order_sheet lié au chantier et à l'adresse
                 const orderSheet = {
                     "worksite_id": worksiteData.id,
                     "worksite_address_id": addressId,
                     "worksite_name": worksite_name
                 };
 
+                // avant de l'envoyer en fetchant l'API avec la méthode POST
                 const orderSheetResponse = await fetch('http://localhost:8080/api/order_sheets/', {
                     method: 'POST',
                     headers: {
@@ -78,11 +85,14 @@ function Create_project() {
                 const orderSheetData = await orderSheetResponse.json();
                 const orderSheetId = orderSheetData.id;
 
+                // si la fiche de commande est bien postée,
                 if (orderSheetResponse.ok) {
-                    alert('order_sheet a été créé avec succès.');
 
+                    // on redirige vers la page de choix du pliage
                     navigate('/foldingchoice', { state: { projectId: orderSheetId, projectName: worksite_name } });
-                } else {
+                } 
+                // sinon on alerte l'utilisateur si une erreur lors d'une des créations est survenue
+                else {
                     alert('Une erreur est survenue lors de la création de order_sheet.');
                 }
             } else {
@@ -93,6 +103,7 @@ function Create_project() {
         }
     }
 
+    // on crée le formulaire avec les infos dont on a besoin pour créer le chantier, son adresse puis sa première fiche de commande
     return (
         <>
             <Header />

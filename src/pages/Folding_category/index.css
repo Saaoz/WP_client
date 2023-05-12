@@ -4,9 +4,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
-    margin-top: 8rem;
+    /* gap: 3rem; */
+    margin-top: 4rem;
     padding: 5rem;
+    height: 100vh;
 }
 
 .folding-category-container{
@@ -17,8 +18,62 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.flex-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 570px) {
+    .flex-header {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+.flex-header p {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.flex-header .btn1 {
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    width: auto;
+    height: auto;
+}
+
+.folding-container-choice {
+    background-color: var(--bg-folding);
+    border-radius: 2rem;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 3rem;
     position: relative;
+}
+
+.folding-category-page .folding-container-choice {
+    gap: 0;
+}
+
+.folding-container-choice h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+.bold-underlined {
+    font-style: normal;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    margin-right: 1rem;
 }
 
 .img-container {
@@ -28,7 +83,7 @@
     justify-content: space-around;
     align-items: center;
     gap: 10rem;
-    padding: 5rem;
+    padding: 3rem;
 }
 
 .folding-category-container button{

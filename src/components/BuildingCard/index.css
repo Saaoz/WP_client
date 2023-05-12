@@ -5,7 +5,28 @@
     justify-content: center;
     background-color: var(--secondaryBg);
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 4rem;
+    gap: 1.5rem
+}
+
+.building-card a {
+    font-size: 1.8rem;
+    text-underline-offset: 0.5rem;
+    color: var(--primaryBtn);
+}
+
+.building-card a:hover {
+    color: var(--primaryBtnHover);
+    transform-origin: center;
+    text-decoration: underline;
+}
+
+.building-card .btn1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 1rem;
+    width: auto;
+    height: auto;
 }
 
 .actionCote{

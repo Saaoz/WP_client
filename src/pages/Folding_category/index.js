@@ -11,6 +11,7 @@ const Folding_category = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // revoir le nom des constantes pour qu'elles restent cohérentes
     const searchParams = new URLSearchParams(location.search);
     const projectIdFromUrl = searchParams.get('projectId');
     const projectId = projectIdFromUrl || location.state?.projectId;
@@ -37,11 +38,13 @@ const Folding_category = () => {
         <div className='folding-category-page'>
             <Header />
             <div className='folding-container-choice'>
-                {/* voir comment ajouter le nom du chantier */}
-                <p> {projectName} </p>
-                {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button className='btn1' value='Retour' onClick={() => navigate('/')} />
-                <h2>Choix du pliage</h2>
+                
+                <div className='flex-header'>
+                    <p> <span className='bold-underlined'>Chantier :</span> {projectName} </p>
+                    <Button className='btn1' value='Retour' onClick={() => navigate('/chantier_existant/')} />
+                </div>
+
+                <h2>Choix du pliage : </h2>
 
                 <div className='img-container'>
                     <Link to={linkToCouv}>
@@ -51,6 +54,7 @@ const Folding_category = () => {
                         <img src={bavette} alt='bavettes' />
                     </Link>
                 </div>
+                
             </div>
         </div>
     );

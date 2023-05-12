@@ -2,6 +2,7 @@
 
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
+import Under_Construction from './pages/Under_Construction/index';
 import SingleChantier from './pages/SingleChantier/index';
 import ChantierExistant from './pages/Chantier_Existant/index';
 import Create from './pages/Create_project/index';
@@ -41,6 +42,7 @@ function App() {
       <div className={`App ${theme}`}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/under_construction' element={<Under_Construction />} />
           <Route path="/chantier/:id" element={<SingleChantier />} />
           <Route path="/chantier_existant/" element={<ChantierExistant />} />
           <Route path="/createproject" element={<Create />} />
