@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext.js';
 import './index.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -8,7 +10,8 @@ import './index.css';
 const Toggle = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
     return (
-        <div className="toggle">
+        <div className="toggle" style={{display: "flex", alignItems: "center"}}>
+            <FontAwesomeIcon icon={faSun} style={{color: "#ffffff", margin: "1rem"}} />
             <label className="switch">
                 <input
                     type="checkbox"
@@ -18,6 +21,7 @@ const Toggle = () => {
                 />
                 <span className="slider round"></span>
             </label>
+            <FontAwesomeIcon icon={faMoon} style={{color: "#ffffff", margin: "1rem"}} />
         </div>
     );
 };
