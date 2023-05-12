@@ -58,14 +58,17 @@ const Validation = () => {
                 <PDFViewer className='pdf-viewer'>
                     <HelloWordPDF data={foldingData} worksite={worksite} cdt={cdt}/>
                 </PDFViewer>
-            </div>
-
             <Button 
                     className='btn1' 
-                    value='Terminer' 
+                    value='Accueil' 
                     onClick={() => navigate('/')} 
             />
-
+            <Button 
+                    className='btn1' 
+                    value='Les chantiers' 
+                    onClick={() => navigate('/chantier_existant/')} 
+            />
+            </div>
         </div>
 
 //pour avoir le pdf en lecture à l'écran
