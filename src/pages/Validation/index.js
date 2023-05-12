@@ -4,175 +4,48 @@ import HelloWordPDF from '../../pdf';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
+import { useEffect, useState } from 'react';
+import { getFoldingsData } from '../../api/foldings';
+import { useLocation } from 'react-router-dom';
 
 const Validation = () => {
     const navigate = useNavigate();
-    
-    const data = [
-        {
-            "id": 1,
-            "identification": "A",
-            "category": "Bavette",
-            "type": "Acier",
-            "ral": 2653,
-            "thickness": 12421,
-            "quantity": 4,
-            "length": 546,
-            "dim1": 654,
-            "dim2": 657,
-            "dim3": 531,
-            "dim4": 1256,
-            "dim5": null,
-            "dim6": null,
-            "dev": 353423,
-            "angle1": 321,
-            "angle2": 321,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 11,
-            "identification": "A",
-            "category": "Bavette 3 plis avec goutte d'eau externe",
-            "type": "ACIER",
-            "ral": 9010,
-            "thickness": 75,
-            "quantity": 5,
-            "length": 4000,
-            "dim1": 50,
-            "dim2": 40,
-            "dim3": 30,
-            "dim4": 10,
-            "dim5": null,
-            "dim6": null,
-            "dev": 130,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 12,
-            "identification": "A",
-            "category": "Bavette 3 plis avec goutte d'eau externe",
-            "type": "ACIER",
-            "ral": 7016,
-            "thickness": 75,
-            "quantity": 16,
-            "length": 4000,
-            "dim1": 40,
-            "dim2": 10,
-            "dim3": 50,
-            "dim4": 10,
-            "dim5": null,
-            "dim6": null,
-            "dev": 110,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 13,
-            "identification": "A",
-            "category": "Bavette 3 plis avec goutte d'eau externe",
-            "type": "ACIER",
-            "ral": 9010,
-            "thickness": 75,
-            "quantity": 6,
-            "length": 4000,
-            "dim1": 40,
-            "dim2": 10,
-            "dim3": 50,
-            "dim4": 10,
-            "dim5": null,
-            "dim6": null,
-            "dev": 110,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 14,
-            "identification": "A",
-            "category": "Bavette 2 plis sans goutte d'eau",
-            "type": "ACIER",
-            "ral": 10,
-            "thickness": 75,
-            "quantity": 10,
-            "length": 4000,
-            "dim1": 40,
-            "dim2": 10,
-            "dim3": 50,
-            "dim4": null,
-            "dim5": null,
-            "dim6": null,
-            "dev": 100,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 15,
-            "identification": "A",
-            "category": "Couvertine 5 plis avec goutte d'eau externe",
-            "type": "ACIER",
-            "ral": 9010,
-            "thickness": 75,
-            "quantity": 5,
-            "length": 4000,
-            "dim1": 20,
-            "dim2": 20,
-            "dim3": 50,
-            "dim4": 10,
-            "dim5": null,
-            "dim6": null,
-            "dev": 160,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        },
-        {
-            "id": 16,
-            "identification": "A",
-            "category": "Couvertine 5 plis avec goutte d'eau interne",
-            "type": "ACIER",
-            "ral": 77,
-            "thickness": 75,
-            "quantity": 7,
-            "length": 4000,
-            "dim1": 20,
-            "dim2": 20,
-            "dim3": 50,
-            "dim4": 40,
-            "dim5": 50,
-            "dim6": 10,
-            "dev": 190,
-            "angle1": null,
-            "angle2": null,
-            "angle3": null,
-            "angle4": null,
-            "angle5": null,
-            "order_sheet_id": 1
-        }
-    ];
 
-    const worksite ="Bâtiment A";
+        // récupération ID
+        const location = useLocation();
+
+        const searchParams = new URLSearchParams(location.search);
+        const projectIdFromUrl = searchParams.get('projectId');
+        const projectId = projectIdFromUrl || location.state?.projectId;
+    
+        const projectNameFromUrl = searchParams.get('projectName');
+        const projectName = projectNameFromUrl || location.state?.projectName;
+    
+        if (projectId && projectId !== projectIdFromUrl) {
+            searchParams.set('projectId', projectId);
+            navigate(`?${searchParams.toString()}`);
+        }
+    
+        if (projectName && projectName !== projectNameFromUrl) {
+            searchParams.set('projectName', projectName);
+            navigate(`?${searchParams.toString()}`);
+        }
+
+        //récupération des données de tous les pliages pour une ordersheet
+    const [foldingData, setFoldingData] = useState([]);
+
+    useEffect(() => {
+        //fonction de nom getOffer de type async pour surveillé la constante response appelant la fonction getOffers
+        const getfoldingData = async () => {
+            const response = await getFoldingsData(projectId);
+             //mise à jour de offer
+            setFoldingData(response);
+        };
+        //execution des functions en fin de useEffect
+        getfoldingData();
+    },[]);
+
+    const worksite = projectName;
     const cdt = "Jhon";
 
     return (
@@ -183,7 +56,7 @@ const Validation = () => {
             </div>
             <div className='validation-container'>
                 <PDFViewer className='pdf-viewer'>
-                    <HelloWordPDF data={data} worksite={worksite} cdt={cdt}/>
+                    <HelloWordPDF data={foldingData} worksite={worksite} cdt={cdt}/>
                 </PDFViewer>
             </div>
 
