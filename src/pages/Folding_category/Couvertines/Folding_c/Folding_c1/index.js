@@ -5,6 +5,7 @@ import Button from '../../../../../components/Button';
 import Checkbox from '../../../../../components/Checkbox';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { getFoldingsData } from '../../../../../api/foldings';
 
 import couvertine1 from '../../../../../sources/imgs/coif1cotation.svg'
 
@@ -32,6 +33,19 @@ const First_folding_c = () => {
         navigate(`?${searchParams.toString()}`);
     }
 
+        //récupération des données de tous les pliages pour une ordersheet
+        const [foldingDatas, setFoldingDatas] = useState([]);
+
+        useEffect(() => {
+            //fonction de nom getOffer de type async pour surveillé la constante response appelant la fonction getOffers
+            const getfoldingData = async () => {
+                const response = await getFoldingsData(projectId);
+                    //mise à jour de offer
+                setFoldingDatas(response);
+            };
+            //execution des functions en fin de useEffect
+            getfoldingData();
+        },[]);   
 
     const [index, setIndex] = useState('A');
     const [dim1, setDim1] = useState(20);
@@ -149,7 +163,7 @@ const First_folding_c = () => {
                 "angle3": null,
                 "angle4": null,
                 "angle5": null,
-                "order_sheet_id": 1
+                "order_sheet_id": projectId
             };
 
             const foldingResponse = await fetch('http://localhost:8080/api/foldings', {
@@ -352,8 +366,12 @@ const First_folding_c = () => {
             </div>
 
             <div className='folding-container'>
-                {/* voir comment ajouter le nom du chantier */}
-                <p>nom du chantier!!</p>
+                <Button 
+                    className='btn1' 
+                    value='Finaliser' 
+                    onClick={() => navigate(`/pdf?projectId=${projectId}&projectName=${projectName}`)} 
+                />
+                <p>{projectName}</p>
                 <h2>Liste des pliages de la demande de prix en cours</h2>
                 <table>
                     <thead>
@@ -375,9 +393,28 @@ const First_folding_c = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {/* faire un boucle sur le tableau reprenant tous les pliages de la demande de prix */}
-                        </tr>
+                        {foldingDatas.map((item, index) => {
+                                
+                                console.log(item);
+                            return (
+                                <tr key={index}>
+                                    <th>{item.identification}</th>
+                                    <th>{item.type}</th>
+                                    <th>{item.thickness}</th>
+                                    <th>{item.dev}</th>
+                                    <th>{item.quantity}</th>
+                                    <th>{item.length}</th>
+                                    <th>{item.ral}</th>
+                                    <th>{item.dim1}</th>
+                                    <th>{item.dim2}</th>
+                                    <th>{item.dim3}</th>
+                                    <th>{item.dim4}</th>
+                                    <th>{item.dim5}</th>
+                                    <th>{item.dim6}</th>
+                                    <th>{item.category}</th>
+                                </tr>
+                            )}
+                        )}
                     </tbody>
                 </table>
             </div>
