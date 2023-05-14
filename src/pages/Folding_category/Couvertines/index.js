@@ -14,25 +14,25 @@ const Couvertines_choice = () => {
     const location = useLocation();
 
     const searchParams = new URLSearchParams(location.search);
-    const projectIdFromUrl = searchParams.get('projectId');
-    const projectId = projectIdFromUrl || location.state?.projectId;
+    const projectIdFromUrl = searchParams.get('orderSheet');
+    const projectId = projectIdFromUrl || location.state?.orderSheet;
 
-    const projectNameFromUrl = searchParams.get('projectName');
-    const projectName = projectNameFromUrl || location.state?.projectName;
+    const projectNameFromUrl = searchParams.get('worksite_name');
+    const projectName = projectNameFromUrl || location.state?.worksite_name;
 
     if (projectId && projectId !== projectIdFromUrl) {
-        searchParams.set('projectId', projectId);
+        searchParams.set('orderSheet', projectId);
         navigate(`?${searchParams.toString()}`);
     }
 
     if (projectName && projectName !== projectNameFromUrl) {
-        searchParams.set('projectName', projectName);
+        searchParams.set('worksite_name', projectName);
         navigate(`?${searchParams.toString()}`);
     }
 
-    const linkCouv1 = `/foldingchoice/Couvertines/1?projectId=${projectId}&projectName=${projectName}`;
-    const linkCouv2 = `/foldingchoice/Couvertines/2?projectId=${projectId}&projectName=${projectName}`;
-    const linkCouv3 = `/foldingchoice/Couvertines/3?projectId=${projectId}&projectName=${projectName}`;
+    const linkCouv1 = `/foldingchoice/Couvertines/1?orderSheet=${projectId}&worksite_name=${projectName}`;
+    const linkCouv2 = `/foldingchoice/Couvertines/2?orderSheet=${projectId}&worksite_name=${projectName}`;
+    const linkCouv3 = `/foldingchoice/Couvertines/3?orderSheet=${projectId}&worksite_name=${projectName}`;
 
     return (
         <div className='folding-page'>
@@ -41,7 +41,7 @@ const Couvertines_choice = () => {
                 {/* voir comment ajouter le nom du chantier */}
                 <p> {projectName} </p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`)} />
+                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`)} />
                 <h2>Choix de couvertines</h2>
 
                 <div className='coif-img-container'>
