@@ -277,6 +277,9 @@ const First_folding_c = () => {
                                     placeholder='Qte'
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
+                                    min={1}
+                                    max={100}
+                                    step={1}
                                     required
                                 />
                             </div>
