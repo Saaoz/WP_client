@@ -53,7 +53,7 @@ const BuildingCard = ({ dataBuilding }) => {
             if (response.ok) {
                 const orderSheetData = await response.json();
                 const orderSheetId = orderSheetData.id;
-                navigate(`/foldingchoice/`, { state: { projectId: orderSheetId, projectName: name } });
+                navigate(`/foldingchoice/`, { state: { orderSheet: orderSheetId, worksite_name: name } });
             } else {
                 console.error('Erreur lors de la création de l\'order sheet');
             }

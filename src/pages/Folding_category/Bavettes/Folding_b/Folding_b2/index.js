@@ -17,19 +17,19 @@ const Second_folding_b = () => {
     const location = useLocation();
 
     const searchParams = new URLSearchParams(location.search);
-    const projectIdFromUrl = searchParams.get('projectId');
-    const projectId = projectIdFromUrl || location.state?.projectId;
+    const projectIdFromUrl = searchParams.get('orderSheet');
+    const projectId = projectIdFromUrl || location.state?.orderSheet;
 
-    const projectNameFromUrl = searchParams.get('projectName');
-    const projectName = projectNameFromUrl || location.state?.projectName;
+    const projectNameFromUrl = searchParams.get('worksite_name');
+    const projectName = projectNameFromUrl || location.state?.worksite_name;
 
     if (projectId && projectId !== projectIdFromUrl) {
-        searchParams.set('projectId', projectId);
+        searchParams.set('orderSheet', projectId);
         navigate(`?${searchParams.toString()}`);
     }
 
     if (projectName && projectName !== projectNameFromUrl) {
-        searchParams.set('projectName', projectName);
+        searchParams.set('worksite_name', projectName);
         navigate(`?${searchParams.toString()}`);
     }
 
@@ -174,7 +174,7 @@ const Second_folding_b = () => {
                 Angle 5 : ${foldingData.angle5}.
                 `);
                 if (checked === true) {
-                    navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`);
+                    navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`);
                 } else {
                     // chemin a changer pour éditer la pièce joint
                     navigate('/');
@@ -201,7 +201,7 @@ const Second_folding_b = () => {
                 <Button
                     className='btn1'
                     value='Retour'
-                    onClick={() => navigate(`/foldingchoice/Bavettes?projectId=${projectId}&projectName=${projectName}`)}
+                    onClick={() => navigate(`/foldingchoice/Bavettes?orderSheet=${projectId}&worksite_name=${projectName}`)}
                 />
                 <h2>Bavette 3 plis avec goutte d'eau interne</h2>
 
@@ -335,7 +335,7 @@ const Second_folding_b = () => {
                 <Button 
                     className='btn1' 
                     value='Finaliser' 
-                    onClick={() => navigate(`/pdf?projectId=${projectId}&projectName=${projectName}`)} 
+                    onClick={() => navigate(`/pdf?orderSheet=${projectId}&worksite_name=${projectName}`)} 
                 />
                 {/* voir comment ajouter le nom du chantier */}
                 <p>{projectName}</p>

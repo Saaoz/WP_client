@@ -14,25 +14,25 @@ function Bavettes_choice() {
     const location = useLocation();
 
     const searchParams = new URLSearchParams(location.search);
-    const projectIdFromUrl = searchParams.get('projectId');
-    const projectId = projectIdFromUrl || location.state?.projectId;
+    const projectIdFromUrl = searchParams.get('orderSheet');
+    const projectId = projectIdFromUrl || location.state?.orderSheet;
 
-    const projectNameFromUrl = searchParams.get('projectName');
-    const projectName = projectNameFromUrl || location.state?.projectName;
+    const projectNameFromUrl = searchParams.get('worksite_name');
+    const projectName = projectNameFromUrl || location.state?.worksite_name;
 
     if (projectId && projectId !== projectIdFromUrl) {
-        searchParams.set('projectId', projectId);
+        searchParams.set('orderSheet', projectId);
         navigate(`?${searchParams.toString()}`);
     }
 
     if (projectName && projectName !== projectNameFromUrl) {
-        searchParams.set('projectName', projectName);
+        searchParams.set('worksite_name', projectName);
         navigate(`?${searchParams.toString()}`);
     }
 
-    const linkBav1 = `/foldingchoice/Bavettes/1?projectId=${projectId}&projectName=${projectName}`;
-    const linkBav2 = `/foldingchoice/Bavettes/2?projectId=${projectId}&projectName=${projectName}`;
-    const linkBav3 = `/foldingchoice/Bavettes/3?projectId=${projectId}&projectName=${projectName}`;
+    const linkBav1 = `/foldingchoice/Bavettes/1?orderSheet=${projectId}&worksite_name=${projectName}`;
+    const linkBav2 = `/foldingchoice/Bavettes/2?orderSheet=${projectId}&worksite_name=${projectName}`;
+    const linkBav3 = `/foldingchoice/Bavettes/3?orderSheet=${projectId}&worksite_name=${projectName}`;
 
     return (
         <div className='folding-page'>
@@ -41,16 +41,16 @@ function Bavettes_choice() {
                 {/* voir comment ajouter le nom du chantier */}
                 <p> {projectName} </p>
                 {/* changement de la route pour retourner sur le choix de pliage */}
-                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?projectId=${projectId}&projectName=${projectName}`)} />
+                <Button className='btn1' value='Retour' onClick={() => navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`)} />
                 <h2>Choix de bavettes</h2>
                 <div className='bib-img-container'>
-                    <Link to= {linkBav1} >
+                    <Link to={linkBav1} >
                         <img src={bavette1} alt='bavettes' />
                     </Link>
-                    <Link to= {linkBav2} >
+                    <Link to={linkBav2} >
                         <img src={bavette2} alt='bavettes' />
                     </Link>
-                    <Link to= {linkBav3} >
+                    <Link to={linkBav3} >
                         <img src={bavette3} alt='bavettes' />
                     </Link>
                 </div>

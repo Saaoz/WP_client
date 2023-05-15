@@ -13,24 +13,24 @@ const Folding_category = () => {
 
     // revoir le nom des constantes pour qu'elles restent cohérentes
     const searchParams = new URLSearchParams(location.search);
-    const projectIdFromUrl = searchParams.get('projectId');
-    const projectId = projectIdFromUrl || location.state?.projectId;
-    
-    const projectNameFromUrl = searchParams.get('projectName');
-    const projectName = projectNameFromUrl || location.state?.projectName;
-    
+    const projectIdFromUrl = searchParams.get('orderSheet');
+    const projectId = projectIdFromUrl || location.state?.orderSheet;
+
+    const projectNameFromUrl = searchParams.get('worksite_name');
+    const projectName = projectNameFromUrl || location.state?.worksite_name;
+
     if (projectId && projectId !== projectIdFromUrl) {
-      searchParams.set('projectId', projectId);
-      navigate(`?${searchParams.toString()}`);
-    }
-    
-    if (projectName && projectName !== projectNameFromUrl) {
-      searchParams.set('projectName', projectName);
-      navigate(`?${searchParams.toString()}`);
+        searchParams.set('orderSheet', projectId);
+        navigate(`?${searchParams.toString()}`);
     }
 
-    const linkToCouv = `/foldingchoice/Couvertines?projectId=${projectId}&projectName=${projectName}`;
-    const linkToBav = `/foldingchoice/Bavettes?projectId=${projectId}&projectName=${projectName}`;
+    if (projectName && projectName !== projectNameFromUrl) {
+        searchParams.set('worksite_name', projectName);
+        navigate(`?${searchParams.toString()}`);
+    }
+
+    const linkToCouv = `/foldingchoice/Couvertines?orderSheet=${projectId}&worksite_name=${projectName}`;
+    const linkToBav = `/foldingchoice/Bavettes?orderSheet=${projectId}&worksite_name=${projectName}`;
     
 
 

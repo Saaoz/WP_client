@@ -89,7 +89,7 @@ function Create_project() {
                 if (orderSheetResponse.ok) {
 
                     // on redirige vers la page de choix du pliage
-                    navigate('/foldingchoice', { state: { projectId: orderSheetId, projectName: worksite_name } });
+                    navigate('/foldingchoice', { state: { orderSheet: orderSheetId, worksite_name: worksite_name } });
                 } 
                 // sinon on alerte l'utilisateur si une erreur lors d'une des créations est survenue
                 else {

@@ -15,19 +15,19 @@ const Validation = () => {
         const location = useLocation();
 
         const searchParams = new URLSearchParams(location.search);
-        const projectIdFromUrl = searchParams.get('projectId');
-        const projectId = projectIdFromUrl || location.state?.projectId;
+        const projectIdFromUrl = searchParams.get('orderSheet');
+        const projectId = projectIdFromUrl || location.state?.orderSheet;
     
-        const projectNameFromUrl = searchParams.get('projectName');
-        const projectName = projectNameFromUrl || location.state?.projectName;
+        const projectNameFromUrl = searchParams.get('worksite_name');
+        const projectName = projectNameFromUrl || location.state?.worksite_name;
     
         if (projectId && projectId !== projectIdFromUrl) {
-            searchParams.set('projectId', projectId);
+            searchParams.set('orderSheet', projectId);
             navigate(`?${searchParams.toString()}`);
         }
     
         if (projectName && projectName !== projectNameFromUrl) {
-            searchParams.set('projectName', projectName);
+            searchParams.set('worksite_name', projectName);
             navigate(`?${searchParams.toString()}`);
         }
 
