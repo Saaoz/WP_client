@@ -181,7 +181,7 @@ const First_folding_b = () => {
                     navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`);
                 } else {
                     // chemin a changer pour éditer la pièce joint
-                    navigate('/');
+                    navigate(`/pdf?orderSheet=${projectId}&worksite_name=${projectName}`);
                 };
             } else {
                 alert('Une erreur est survenue lors de la création du pliage.');
