@@ -169,8 +169,8 @@ const Third_folding_b = () => {
                 if (checked === true) {
                     navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`);
                 } else {
-                    // chemin a changer pour éditer la pièce joint
-                    navigate(`/`);
+                    // édition du pdf
+                    navigate(`/pdf?orderSheet=${projectId}&worksite_name=${projectName}`);
                 };
             } else {
                 alert('Une erreur est survenue lors de la création du pliage.');

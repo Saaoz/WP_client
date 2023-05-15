@@ -180,7 +180,7 @@ const First_folding_b = () => {
                 if (checked === true) {
                     navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`);
                 } else {
-                    // chemin a changer pour éditer la pièce joint
+                    // édition du pdf
                     navigate(`/pdf?orderSheet=${projectId}&worksite_name=${projectName}`);
                 };
             } else {
