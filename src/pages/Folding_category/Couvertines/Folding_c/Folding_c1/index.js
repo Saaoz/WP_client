@@ -198,8 +198,8 @@ const First_folding_c = () => {
                 if(checked === true){
                     navigate(`/foldingchoice?orderSheet=${projectId}&worksite_name=${projectName}`);
                 }else{
-                    // chemin a changer pour éditer la pièce joint
-                    navigate('/');
+                    // édition du pdf
+                    navigate(`/pdf?orderSheet=${projectId}&worksite_name=${projectName}`);
                 };
             } else {
                 alert('Une erreur est survenue lors de la création du pliage.');
@@ -277,6 +277,9 @@ const First_folding_c = () => {
                                     placeholder='Qte'
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
+                                    min={1}
+                                    max={100}
+                                    step={1}
                                     required
                                 />
                             </div>
