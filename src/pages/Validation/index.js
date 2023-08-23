@@ -46,7 +46,7 @@ const Validation = () => {
     },[]);
 
     const worksite = projectName;
-    const cdt = "Jhon";
+    const cdt = sessionStorage.getItem("works_manager_firstname");
 
     return (
         <div className='validation-page'>

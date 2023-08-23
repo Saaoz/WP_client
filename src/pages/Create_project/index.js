@@ -13,6 +13,8 @@ function Create_project() {
     const [street, setStreet] = useState('');
     const [postal_code, setPostal_code] = useState('');
     const [city, setCity] = useState('');
+    const works_manager_id = sessionStorage.getItem("works_manager_id");
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,7 +48,7 @@ function Create_project() {
             // une fois l'adresse postée en DB, on crée l'objet worksite grâce à l'adresse_id de l'adresse
             const worksite = {
                 "name": worksite_name,
-                "works_manager_id": 5,
+                "works_manager_id": works_manager_id,
                 "address_id": addressId
             };
 

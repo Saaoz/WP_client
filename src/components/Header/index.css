@@ -11,10 +11,17 @@
     background-color: var(--headerBg);
 }
 
-.header p {
+.header p, a {
     color: var(--headerTxt);
     font-weight: 700;
     text-transform: uppercase;
+    text-decoration: none;
+}
+
+.session {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
 }
 
 .header nav {
@@ -45,6 +52,14 @@
     -webkit-animation:spin 0.2s linear ;
     -moz-animation:spin 0.2s linear ;
     animation:spin 0.2s linear ;
+}
+
+.disconnect {
+    background:none;
+    border:none;
+    color: var(--headerTxt);
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 @-moz-keyframes spin { 

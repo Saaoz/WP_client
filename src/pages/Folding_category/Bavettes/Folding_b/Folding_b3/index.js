@@ -36,6 +36,19 @@ const Third_folding_b = () => {
         //récupération des données de tous les pliages pour une ordersheet
         const [foldingDatas, setFoldingDatas] = useState([]);
 
+        const [index, setIndex] = useState(foldingDatas.length + 1);
+        const [dim1, setDim1] = useState(40);
+        const [dim2, setDim2] = useState('');
+        const [dim3, setDim3] = useState(50);
+        const [epaisseur, setEpaisseur] = useState(75);
+        const [type, setType] = useState('ACIER');
+        const [ral, setRal] = useState('');
+        const [quantity, setQuantity] = useState('');
+        const [longueur, setLongueur] = useState(4000);
+        const [developpe, setDeveloppe] = useState(0);
+        const [inputStatus, setInputStatus] = useState(true);
+        const [checked, setChecked] = useState(true);
+
         useEffect(() => {
             //fonction de nom getOffer de type async pour surveillé la constante response appelant la fonction getOffers
             const getfoldingData = async () => {
@@ -45,20 +58,13 @@ const Third_folding_b = () => {
             };
             //execution des functions en fin de useEffect
             getfoldingData();
-        },[]);        
+        },[]);
+        
+        useEffect(() => {
+            setIndex(foldingDatas.length + 1)
+        }, [foldingDatas])
 
-    const [index, setIndex] = useState('A');
-    const [dim1, setDim1] = useState(40);
-    const [dim2, setDim2] = useState('');
-    const [dim3, setDim3] = useState(50);
-    const [epaisseur, setEpaisseur] = useState(75);
-    const [type, setType] = useState('ACIER');
-    const [ral, setRal] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [longueur, setLongueur] = useState(4000);
-    const [developpe, setDeveloppe] = useState(0);
-    const [inputStatus, setInputStatus] = useState(true);
-    const [checked, setChecked] = useState(true);
+
 
     const handleChangeDim1 = (event) => {
         const value = event.target.value;

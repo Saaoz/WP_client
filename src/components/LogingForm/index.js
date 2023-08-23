@@ -1,37 +1,34 @@
-import './index.css'
+import './index.css';
+import { useForm } from 'react-hook-form';
+import Login from '../../api/login';
 
 const LogingForm = () => {
 
-        const handleSubmit = async (e) => {
-        e.preventDefault();
-        const dataFrom=new FormData(e.target);
-        // console.log(dataFrom);
-        //il faut le endpoint pour le login
-        const response = await fetch('http://localhost:8000/wp-json/wp/v2/users',
-        {
-            method:'POST',
-            body:dataFrom,
-            creadentials: 'include',
-            headers:{
-                Accept:'application/json'
-            }
-        })
-        console.log(response);
+    const { register, handleSubmit } = useForm();
 
+    const onSubmit = (data) => {
+        const formData = {
+            mail: data.mail,
+            password: data.password
+        }
+        Login(formData)
     }
+    
+    
+
     return (
-        <form className='logingform' >
+        <form className='logingform' onSubmit={handleSubmit(onSubmit)}>
             <h1 className='title-loging-form'>Se connecter</h1>
             {/* /ferme le form and refresh page */}
-            <span onClick={() => window.location.reload()} className="span-close" title="Close foem">&times;</span>
+            <span onClick={() => window.location.reload()} className="span-close" title="Close form">&times;</span>
 
             <label htmlFor="input-user" className='label-loging-form'>Nom d'utilisateur</label>
-            <input type='email' id='input-user' className='input-user' name='input-user' placeholder='Email'/>
+            <input type="email" className='input-user' {...register('mail', { required: true })} />
 
             <label htmlFor="input-password" className='label-loging-form'>Mot de passe</label>
-            <input type='password' id='input-password' className='input-password' name='input-password' placeholder='Password'/>
+            <input type="password" className='input-password' {...register('password', { required: true })} />
 
-            <input type='submit' id='submit-loging-form' className='submit-loging-form' name='submit-loging-form' value='Se connecter'/>
+            <button type="submit" className='submit-loging-form'>Se connecter</button>
             
         </form>
     )

@@ -34,6 +34,20 @@ const First_folding_b = () => {
 
         //récupération des données de tous les pliages pour une ordersheet
         const [foldingDatas, setFoldingDatas] = useState([]);
+        
+        const [index, setIndex] = useState(foldingDatas.length + 1);
+        const [dim1, setDim1] = useState(40);
+        const [dim2, setDim2] = useState('');
+        const [dim3, setDim3] = useState(50);
+        const [dim4, setDim4] = useState(10);
+        const [epaisseur, setEpaisseur] = useState(75);
+        const [type, setType] = useState('ACIER');
+        const [ral, setRal] = useState('');
+        const [quantity, setQuantity] = useState('');
+        const [longueur, setLongueur] = useState(4000);
+        const [developpe, setDeveloppe] = useState(0);
+        const [inputStatus, setInputStatus] = useState(true);
+        const [checked, setChecked] = useState(true);
 
         useEffect(() => {
             //fonction de nom getOffer de type async pour surveillé la constante response appelant la fonction getOffers
@@ -41,24 +55,21 @@ const First_folding_b = () => {
                 const response = await getFoldingsData(projectId);
                     //mise à jour de offer
                 setFoldingDatas(response);
+                
             };
             //execution des functions en fin de useEffect
             getfoldingData();
-        },[]);        
+            
+        },[]);
 
-    const [index, setIndex] = useState('A');
-    const [dim1, setDim1] = useState(40);
-    const [dim2, setDim2] = useState('');
-    const [dim3, setDim3] = useState(50);
-    const [dim4, setDim4] = useState(10);
-    const [epaisseur, setEpaisseur] = useState(75);
-    const [type, setType] = useState('ACIER');
-    const [ral, setRal] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [longueur, setLongueur] = useState(4000);
-    const [developpe, setDeveloppe] = useState(0);
-    const [inputStatus, setInputStatus] = useState(true);
-    const [checked, setChecked] = useState(true);
+        useEffect(() => {
+            setIndex(foldingDatas.length + 1)
+        }, [foldingDatas])
+        
+        
+        // console.log(foldingDatas);
+
+    
 
     const handleChangeDim1 = (event) => {
         const value = event.target.value;
@@ -100,8 +111,7 @@ const First_folding_b = () => {
 
     }, [dim1, dim2, dim3, dim4, epaisseur, type, ral, longueur, developpe, quantity]);
 
-    //si un pliage existe définir la lettre de l'index selon le nombre de pliage de la demande de prix en cours faire un GET sur l'ID de ordersheet pour avoir le tableau de pliage et selon la longueur définir la lettre de l'index
-
+    
 
 
 

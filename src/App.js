@@ -1,13 +1,14 @@
 // App.js
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Home from './pages/Home/index';
+import Login_Home from './pages/Login_Home/index';
 import Under_Construction from './pages/Under_Construction/index';
 import SingleChantier from './pages/SingleChantier/index';
 import ChantierExistant from './pages/Chantier_Existant/index';
 import Create from './pages/Create_project/index';
 import CreateWorkmanager from './pages/Create_worksmanagers/index';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { ThemeContext } from './ThemeContext';
 
@@ -30,6 +31,19 @@ import Validation from './pages/Validation';
 
 
 function App() {
+  
+  const isLogin = sessionStorage.getItem('isLogin') === `true`;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogin) {
+      navigate('/login');
+    }
+  }, [isLogin, navigate]);
+
+
+
+// mode claire/sombre
   const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
@@ -42,6 +56,7 @@ function App() {
       <div className={`App ${theme}`}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login_Home />} />
           <Route path='/under_construction' element={<Under_Construction />} />
           <Route path="/chantier/:id" element={<SingleChantier />} />
           <Route path="/chantier_existant/" element={<ChantierExistant />} />
