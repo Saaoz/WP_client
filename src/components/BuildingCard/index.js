@@ -67,8 +67,8 @@ const BuildingCard = ({ dataBuilding }) => {
     return (
         <div className="building-card">
             <h3>{name}</h3>
-            {/* remplacer under_construction par le lien de la consultation quand elle sera créé type /chantier_consultation/${id} */}
-            <p>Lire la : <Link to={`/under_construction`}>Dernière consultation</Link></p>
+            {/* remplacer under_construction par le lien de la consultation quand elle sera créé type /chantier_consultation/${id} pdf?orderSheet=84&worksite_name=mfz*/}
+            <p>Lire la : <Link to={`/pdf?orderSheet=${id}&worksite_name=${name}`}>Dernière consultation</Link></p>
             <Button className="btn1" value="Nouv. demande de prix" onClick={createOrderSheet} />
         </div>
     );

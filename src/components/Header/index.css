@@ -11,7 +11,7 @@
     background-color: var(--headerBg);
 }
 
-.header p, a {
+.header p {
     color: var(--headerTxt);
     font-weight: 700;
     text-transform: uppercase;
@@ -60,6 +60,11 @@
     color: var(--headerTxt);
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.hidden {
+    display: none;
+    background-color: red;
 }
 
 @-moz-keyframes spin { 

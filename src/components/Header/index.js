@@ -20,6 +20,14 @@ const Header = () => {
         window.location.href = '/login';
     }
 
+    //fonction pour masquer le link de création de conducteur de travaux
+    var classLink ="";
+    // console.log(sessionStorage.getItem('isLogin'));
+    if (sessionStorage.getItem('isLogin')==='true') {
+        classLink = "";
+    }else {
+        classLink = "hidden";
+    }
 
     return (
         <div className="header">
@@ -28,12 +36,12 @@ const Header = () => {
                     {/* <p className='connexion-status'>Login</p> */}
                     <Logo />
                     
-                    {/* <Link to="/" className='connexion-status' >
-                        <p className='connexion-status'>Login</p>
-                    </Link> */}
-                    <Link to="/createworkmanager" className='createworkmanager'>
-                        <p className='connexion-status'>nouveau conduct.</p>
+                    <Link
+                        to="/createworkmanager"
+                        className={`createworkmanager ${classLink}`}  >
+                        <p className={`connexion-status ${classLink}`}>nouveau conduct.</p>
                     </Link>
+                    
                 </div>
                 <div className="session">
                     <button className="disconnect" onClick={disconnect} title="Se déconnecter">{works_manager}</button>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Home() {
-    console.log(sessionStorage.getItem('works_manager_firstname'))
+    // console.log(sessionStorage.getItem('works_manager_firstname'))
 
     return (
         <div className="home-container" >

@@ -29,17 +29,40 @@ import ThirstBavettes from './pages/Folding_category/Bavettes/Folding_b/Folding_
 
 import Validation from './pages/Validation';
 
+import { getWorksmanagersData } from './api/worksmanagers';
+
 
 function App() {
-  
+
+
+  //je vérifie si j'ai un worksManager en base de données
+  const [worksmanagersData, setWorksmanagersData] = useState([]);
+
   const isLogin = sessionStorage.getItem('isLogin') === `true`;
   const navigate = useNavigate();
 
   useEffect(() => {
+    
+    const getWorksmanagersDatas = async () => {
+      const response = await getWorksmanagersData();
+      setWorksmanagersData(response);
+    };
+
+
+
     if (!isLogin) {
-      navigate('/login');
-    }
-  }, [isLogin, navigate]);
+      navigate ('/login');
+      if (worksmanagersData.length === 0) {
+        navigate ('/createworkmanager');
+      }
+    } 
+
+
+    getWorksmanagersDatas();
+
+  },[isLogin, navigate, worksmanagersData.length]);
+  
+  // console.log(worksmanagersData.length);
 
 
 
