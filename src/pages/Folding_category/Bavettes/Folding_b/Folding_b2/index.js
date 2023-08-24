@@ -148,7 +148,7 @@ const Second_folding_b = () => {
                 "order_sheet_id": projectId
             };
 
-            const foldingResponse = await fetch('http://localhost:8080/api/foldings', {
+            const foldingResponse = await fetch('/api/foldings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -252,6 +252,7 @@ const Second_folding_b = () => {
                                     value={ral}
                                     onChange={(e) => setRal(e.target.value)}
                                     required
+                                    tabIndex={2}
                                 />
                             </div>
                             <div className='input-content'>
@@ -263,6 +264,7 @@ const Second_folding_b = () => {
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
                                     required
+                                    tabIndex={3}
                                 />
                             </div>
                             <div className='input-content'>
@@ -306,6 +308,7 @@ const Second_folding_b = () => {
                                 onChange={(e) => handleChangeDim2(e)}
                                 value={dim2}
                                 required
+                                tabIndex={1}
                             />
                             <Input
                                 className='input dim dim3'

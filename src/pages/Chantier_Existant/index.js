@@ -9,7 +9,7 @@ const Chantier_Existant = () => {
     useEffect(() => {
         const fetchOngoingProjects = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/work_sites/');
+                const response = await fetch('/api/work_sites/');
                 if (response.ok) {
                     const projectsData = await response.json();
                     setOngoingProjects(projectsData.slice(-3).reverse());

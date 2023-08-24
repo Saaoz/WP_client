@@ -49,6 +49,9 @@ const First_folding_b = () => {
         const [inputStatus, setInputStatus] = useState(true);
         const [checked, setChecked] = useState(true);
 
+
+        
+
         useEffect(() => {
             //fonction de nom getOffer de type async pour surveillé la constante response appelant la fonction getOffers
             const getfoldingData = async () => {
@@ -158,7 +161,7 @@ const First_folding_b = () => {
                 "order_sheet_id": projectId
             };
 
-            const foldingResponse = await fetch('http://localhost:8080/api/foldings', {
+            const foldingResponse = await fetch('/api/foldings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -259,6 +262,7 @@ const First_folding_b = () => {
                                     value={ral}
                                     onChange={(e) => setRal(e.target.value)}
                                     required
+                                    tabIndex={2}
                                 />
                             </div>
                             <div className='input-content'>
@@ -270,6 +274,7 @@ const First_folding_b = () => {
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
                                     required
+                                    tabIndex={3}
                                 />
                             </div>
                             <div className='input-content'>
@@ -313,6 +318,7 @@ const First_folding_b = () => {
                                 onChange={(e) => handleChangeDim2(e)}
                                 value={dim2}
                                 required
+                                tabIndex={1}
                             />
                             <Input
                                 className='input dim dim3'
@@ -331,12 +337,13 @@ const First_folding_b = () => {
                         </div>
                     </div>
                     <div className='form-cta'>
-                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus} />
+                        <input className='btn1' type='submit' value='VALIDER' onClick={handleSubmit} disabled={inputStatus} tabIndex={4} />
                         <Checkbox
                             className='checkbox'
                             value='Ajouter un pliage'
                             status={checked}
                             onChange={() => setChecked(!checked)}
+                            tabIndex={5}
                         />
                     </div>
                 </form>

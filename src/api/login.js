@@ -2,7 +2,7 @@ const Login = async (formData) => {
     const body = JSON.stringify(formData);
 
     try {
-        const response = await fetch('http://localhost:8080/api/login', {
+        const response = await fetch('/api/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

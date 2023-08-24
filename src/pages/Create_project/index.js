@@ -35,7 +35,7 @@ function Create_project() {
                 "city": city
             };
             // on envoie l'objet address en fetchant l'API avec la méthode POST
-            const addressResponse = await fetch('http://localhost:8080/api/addresses/', {
+            const addressResponse = await fetch('/api/addresses/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ function Create_project() {
             };
 
             // on envoie l'objet worksite en fetchant l'API avec la méthode POST
-            const worksiteResponse = await fetch('http://localhost:8080/api/work_sites/', {
+            const worksiteResponse = await fetch('/api/work_sites/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -77,7 +77,7 @@ function Create_project() {
                 };
 
                 // avant de l'envoyer en fetchant l'API avec la méthode POST
-                const orderSheetResponse = await fetch('http://localhost:8080/api/order_sheets/', {
+                const orderSheetResponse = await fetch('/api/order_sheets/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -121,8 +121,8 @@ function Create_project() {
                         </div>
                     </div>
                     <div className='btn_zone'>
-                        <Button className="btn1" value="Retour" onClick={() => navigate('/')} />
                         <Button className="btn1" onClick={handleSubmit} value="Valider" />
+                        <Button className="btn1" value="Retour" onClick={() => navigate('/')} />
 
                     </div>
                 </form>

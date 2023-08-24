@@ -22,11 +22,11 @@ const LogingForm = () => {
             {/* /ferme le form and refresh page */}
             <span onClick={() => window.location.reload()} className="span-close" title="Close form">&times;</span>
 
-            <label htmlFor="input-user" className='label-loging-form'>Nom d'utilisateur</label>
-            <input type="email" className='input-user' {...register('mail', { required: true })} />
+            <label htmlFor="input-user" className='label-loging-form'>Email utilisateur</label>
+            <input type="email" className='input-user' placeholder='Email' {...register('mail', { required: true })} />
 
             <label htmlFor="input-password" className='label-loging-form'>Mot de passe</label>
-            <input type="password" className='input-password' {...register('password', { required: true })} />
+            <input type="password" className='input-password' placeholder='Password' {...register('password', { required: true })} />
 
             <button type="submit" className='submit-loging-form'>Se connecter</button>
             

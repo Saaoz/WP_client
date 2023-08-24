@@ -36,7 +36,7 @@ const Create_worksmanagers = () => {
                 "password": password
             };
 
-            const workmanagerResponse = await fetch('http://localhost:8080/api/works_managers/', {
+            const workmanagerResponse = await fetch('/api/works_managers/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

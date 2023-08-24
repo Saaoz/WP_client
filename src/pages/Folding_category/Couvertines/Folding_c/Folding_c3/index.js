@@ -167,7 +167,7 @@ const Third_folding_c = () => {
                 "order_sheet_id": projectId
             };
 
-            const foldingResponse = await fetch('http://localhost:8080/api/foldings', {
+            const foldingResponse = await fetch('/api/foldings', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -268,6 +268,7 @@ const Third_folding_c = () => {
                                     value={ral}
                                     onChange={(e) => setRal(e.target.value)}
                                     required
+                                    tabIndex={2}
                                 />
                             </div>
                             <div className='input-content'>
@@ -279,6 +280,7 @@ const Third_folding_c = () => {
                                     value={quantity}
                                     onChange={(e) => setQuantity(e.target.value)}
                                     required
+                                    tabIndex={3}
                                 />
                             </div>
                             <div className='input-content'>
@@ -336,6 +338,7 @@ const Third_folding_c = () => {
                                 onChange={(e) => handleChangeDim4(e)}
                                 value={dim4}
                                 required
+                                tabIndex={1}
                             />
                             <Input
                                 className='input dim dim5-coiff'

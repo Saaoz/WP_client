@@ -2,7 +2,7 @@
 
 export const getWorksmanagersData = async () => {
     try {
-        const response = await fetch(`http://localhost:8080/api/works_managers`);
+        const response = await fetch(`/api/works_managers`);
         const data = await response.json();
         return data;
     } catch (error) {
@@ -15,7 +15,7 @@ export const getWorksmanagersData = async () => {
     
 //     var worksmanagersData;
 //     //déclaration d'un constante response de type fetch de type async
-//     fetch(`http://localhost:8080/api/works_managers`)
+//     fetch(`/api/works_managers`)
 //     .then ((response) => response.json())
 //     .then ((data) => { worksmanagersData = data})
 //     .catch(() => console.log("error fetch works_managers"))
