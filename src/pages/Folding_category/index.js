@@ -6,7 +6,6 @@ import Header from '../../components/Header';
 
 import couvertine from '../../sources/imgs/couvertine.svg';
 import bavette from '../../sources/imgs/bib.svg';
-import { useEffect, useState } from 'react';
 
 const Folding_category = () => {
   const navigate = useNavigate();
@@ -63,16 +62,8 @@ const Folding_category = () => {
       console.error('Erreur lors de la récupération des détails des order sheets :', error);
     }
 
-
-
-
-
-
-
-
-
     navigate('/chantier_existant/');
-  }
+  };
 
   return (
     <div className='folding-category-page'>

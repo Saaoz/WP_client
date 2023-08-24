@@ -406,7 +406,7 @@ const First_folding_c = () => {
                     <tbody>
                         {foldingDatas.map((item, index) => {
                                 
-                                console.log(item);
+                                // console.log(item);
                             return (
                                 <tr key={index}>
                                     <th>{item.identification}</th>
