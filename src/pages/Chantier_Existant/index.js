@@ -2,6 +2,7 @@ import './index.css';
 import BuildingCard from '../../components/BuildingCard';
 import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
+import ScrollToTop from '../../components/ScrollUp';
 
 const Chantier_Existant = () => {
     const [ongoingProjects, setOngoingProjects] = useState([]);
@@ -27,6 +28,7 @@ const Chantier_Existant = () => {
     return (
         <>
             <Header />
+            <ScrollToTop/>
             <div className="existing-site-page">
                 <div className="existing-site-container">
                     <h1>Chantiers en cours :</h1>

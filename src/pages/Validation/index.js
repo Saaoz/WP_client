@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import { useEffect, useState } from 'react';
 import { getFoldingsData } from '../../api/foldings';
 import { useLocation } from 'react-router-dom';
+import ScrollToTop from '../../components/ScrollUp';
 
 const Validation = () => {
     const navigate = useNavigate();
@@ -50,6 +51,7 @@ const Validation = () => {
 
     return (
         <div className='validation-page'>
+            <ScrollToTop/>
                 <Header/>
             <div className='validation-container'>
                 <h2>Récapitulatif de la demande de prix</h2>

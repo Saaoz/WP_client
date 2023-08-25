@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { getFoldingsData } from '../../../../../api/foldings';
 
 import bavette1 from '../../../../../sources/imgs/bib3cotation.svg'
+import ScrollToTop from '../../../../../components/ScrollUp';
 
 const Third_folding_b = () => {
     const navigate = useNavigate();
@@ -193,6 +194,7 @@ const Third_folding_b = () => {
     return (
 
         <div className='folding-page'>
+            <ScrollToTop/>
             <Header />
             <div className='folding-container'>
                 {/* voir comment ajouter le nom du chantier */}

@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import './index.css';
 import '../../components/Button/index.css'
 import '../../components/Input/index.css'
+import ScrollToTop from "../../components/ScrollUp";
 
 function Create_project() {
     const navigate = useNavigate();
@@ -109,6 +110,7 @@ function Create_project() {
     return (
         <>
             <Header />
+            <ScrollToTop/>
             <div className='back_formu'>
                 <form className='formulaire' >
                     <h1>Créer un chantier :</h1>

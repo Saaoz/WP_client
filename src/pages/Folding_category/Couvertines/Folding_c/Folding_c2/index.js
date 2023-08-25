@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { getFoldingsData } from '../../../../../api/foldings';
 
 import couvertine2 from '../../../../../sources/imgs/coif2cotation.svg'
+import ScrollToTop from '../../../../../components/ScrollUp';
 
 
 const Second_folding_c = () => {
@@ -217,6 +218,7 @@ const Second_folding_c = () => {
     return (
 
         <div className='folding-page'>
+            <ScrollToTop/>
             <Header />
             <div className='folding-container'>
                 {/* voir comment ajouter le nom du chantier */}

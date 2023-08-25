@@ -4,6 +4,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import ScrollToTop from '../../components/ScrollUp';
 
 const Create_worksmanagers = () => {
     const navigate = useNavigate();
@@ -61,6 +62,7 @@ const Create_worksmanagers = () => {
 
     return (
         <>
+        <ScrollToTop/>
             <Header />
             <div className='create-worksmanagers-page'>
 
