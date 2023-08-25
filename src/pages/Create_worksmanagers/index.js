@@ -21,7 +21,6 @@ const Create_worksmanagers = () => {
         Nom : ${firstName}
         Prénom : ${lastName}
         Email : ${email}
-        Mot de passe : ${password}
 
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
 
@@ -41,15 +40,9 @@ const Create_worksmanagers = () => {
                 },
                 body: JSON.stringify(workmanager)
             });
-            const workmanagerData = await workmanagerResponse.json();
+            
             if (workmanagerResponse.ok) {
-                alert(`Le conducteur de travaux a été créé avec succès avec :
-                id : ${workmanagerData.id}.
-                Nom : ${workmanagerData.firstname}.
-                Prénom : ${workmanagerData.lastname}.
-                Email : ${workmanagerData.mail}.
-                Mot de passe : ${workmanagerData.password}.
-                `);
+                alert(`Le conducteur de travaux a été créé avec succès.`);
                 navigate('/');
 
             } else {
