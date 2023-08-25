@@ -10,7 +10,6 @@ const Create_worksmanagers = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     
     const handleSubmit = async (e) => {
@@ -21,7 +20,6 @@ const Create_worksmanagers = () => {
         Nom : ${firstName}
         Prénom : ${lastName}
         Email : ${email}
-        Login : ${login}
         Mot de passe : ${password}
 
         Cliquez sur "OK" pour confirmer ou sur "Annuler" pour annuler.`);
@@ -32,7 +30,6 @@ const Create_worksmanagers = () => {
                 "firstname": firstName,
                 "lastname": lastName,
                 "mail": email,
-                "login": login,
                 "password": password
             };
 
@@ -50,7 +47,6 @@ const Create_worksmanagers = () => {
                 Nom : ${workmanagerData.firstname}.
                 Prénom : ${workmanagerData.lastname}.
                 Email : ${workmanagerData.mail}.
-                Login : ${workmanagerData.login}.
                 Mot de passe : ${workmanagerData.password}.
                 `);
                 navigate('/');
@@ -79,7 +75,6 @@ const Create_worksmanagers = () => {
                         <Input placeholder='Nom' type='text' id='lastName' onChange={(e) => setLastName(e.target.value)} required/>
                         <Input placeholder='Email' type='email' id='email' onChange={(e) => setEmail(e.target.value)} required/>
 
-                        <Input placeholder='Login' type='text' id='login' onChange={(e) => setLogin(e.target.value)} required/>
                         <Input placeholder='Mot de passe' type='password' id='password' onChange={(e) => setPassword(e.target.value)} required/>
                         
                         <div className='cta-container'>
