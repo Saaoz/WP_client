@@ -2,6 +2,7 @@ import './index.css';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../../components/ScrollUp';
 
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
 
     return (
         <div className="home-container" >
+            <ScrollToTop/>
             <Header />
             <div className='home-content'>
                 {/* quand le système de login sera en place, envoyer vers le login avant de pouvoir accéder aux pages */}

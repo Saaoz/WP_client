@@ -1,3 +1,4 @@
+import ScrollToTop from '../../components/ScrollUp';
 import './index.css';
 
 
@@ -5,6 +6,7 @@ import './index.css';
 function SingleChantier() {
     return (
         <>
+        <ScrollToTop/>
         
         </>
     );

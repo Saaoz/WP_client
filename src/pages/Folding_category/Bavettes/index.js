@@ -7,6 +7,7 @@ import bavette1 from '../../../sources/imgs/bib1.svg';
 import bavette2 from '../../../sources/imgs/bib2.svg';
 import bavette3 from '../../../sources/imgs/bib3.svg';
 import Header from '../../../components/Header';
+import ScrollToTop from '../../../components/ScrollUp';
 
 
 function Bavettes_choice() {
@@ -36,6 +37,7 @@ function Bavettes_choice() {
 
     return (
         <div className='folding-page'>
+            <ScrollToTop/>
             <Header />
             <div className='folding-container-choice'>
                 {/* voir comment ajouter le nom du chantier */}

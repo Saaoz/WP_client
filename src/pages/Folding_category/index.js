@@ -6,6 +6,7 @@ import Header from '../../components/Header';
 
 import couvertine from '../../sources/imgs/couvertine.svg';
 import bavette from '../../sources/imgs/bib.svg';
+import ScrollToTop from '../../components/ScrollUp';
 
 const Folding_category = () => {
   const navigate = useNavigate();
@@ -67,6 +68,7 @@ const Folding_category = () => {
 
   return (
     <div className='folding-category-page'>
+      <ScrollToTop/>
       <Header />
       <div className='folding-container-choice'>
 
